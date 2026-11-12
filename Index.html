@@ -1,0 +1,1139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Victory Tuition Centre</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@400;500;600&display=swap">
+  <style>
+    :root {
+      --bg: #fff7e0; --card: #fff; --tx: #12203d; --mu: #667592; --bd: #f1e2b4;
+      --pr: #2f5bea; --gd: #ffc400; --ok: #0e9f6e; --wn: #e8590c; --no: #e11d48;
+      --fd: Orbitron, "Segoe UI", system-ui, sans-serif;
+      --fb: Poppins, "Segoe UI", system-ui, sans-serif;
+      color-scheme: light; box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0a1226; --card: #121d38; --tx: #eaf0ff; --mu: #93a3c4; --bd: #22325a;
+        --pr: #7ea0ff; --ok: #34d399; --wn: #fb923c; --no: #fb7185; color-scheme: dark;
+      }
+    }
+    html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: radial-gradient(800px 380px at 100% -5%, color-mix(in srgb, var(--gd) 28%, transparent), transparent), var(--bg);
+      color: var(--tx); font: 15px/1.55 var(--fb);
+    }
+    .app { display: flex; min-height: 100vh; }
+    nav {
+      width: 232px; background: linear-gradient(180deg, #0b1b3a, #13265a);
+      padding: 16px 12px; display: flex; flex-direction: column; gap: 4px; flex-shrink: 0;
+    }
+    .brand { display: flex; gap: 10px; align-items: center; color: #fff; font: 800 13px var(--fd); margin-bottom: 14px; }
+    .brand small { display: block; font: 400 10px var(--fb); color: #c9d4f5; margin-top: 2px; }
+    .brand img { width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--gd); flex-shrink: 0; }
+    nav a { padding: 10px 12px; border-radius: 10px; cursor: pointer; color: #cdd8f7; white-space: nowrap; text-decoration: none; transition: background 0.15s; }
+    nav a:hover { background: rgba(255, 255, 255, 0.08); }
+    nav a.on { background: linear-gradient(135deg, #ffc400, #ff9f1c); color: #1b1b1b; font-weight: 600; }
+    .who { margin-top: auto; color: #8fa0d0; text-transform: capitalize; font-size: 12px; padding-top: 10px; }
+    main { flex: 1; padding: 24px; min-width: 0; max-width: 1000px; }
+    h1, h2 { font-family: var(--fd); }
+    h1 { margin: 0 0 16px; font-size: 22px; }
+    h3 { margin: 0 0 10px; }
+    .card { background: var(--card); border: 1px solid var(--bd); border-radius: 16px; padding: 16px; margin-bottom: 14px; box-shadow: 0 4px 14px rgba(11, 27, 58, 0.07); }
+    .hero {
+      background: linear-gradient(120deg, #0b1b3a, #2f5bea 65%, #7c3aed); color: #fff;
+      border-radius: 18px; padding: 22px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+    }
+    .hero h2 { margin: 0; color: var(--gd); font-size: 20px; }
+    .clk { font: 800 28px var(--fd); letter-spacing: 2px; color: #fff; text-shadow: 0 0 12px rgba(255, 196, 0, 0.7); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 14px; }
+    .stat { border-radius: 16px; padding: 14px; color: #fff; background: linear-gradient(135deg, #2f5bea, #7c3aed); }
+    .stat:nth-child(2) { background: linear-gradient(135deg, #0e9f6e, #0891b2); }
+    .stat:nth-child(3) { background: linear-gradient(135deg, #ea580c, #db2777); }
+    .stat:nth-child(4) { background: linear-gradient(135deg, #0b1b3a, #475569); }
+    .stat small { color: #e6ecff; }
+    .stat b { display: block; font: 800 19px var(--fd); }
+    input, select, textarea { width: 100%; padding: 10px; border: 1px solid var(--bd); border-radius: 10px; background: var(--bg); color: var(--tx); font: inherit; margin-bottom: 8px; }
+    textarea { min-height: 90px; }
+    .row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+    .row > * { flex: 1; min-width: 130px; margin-bottom: 0; }
+    .btn, .btn2 {
+      border: 0; border-radius: 10px; padding: 10px 16px; font: 600 14px var(--fb); cursor: pointer;
+      background: linear-gradient(135deg, #ffc400, #ff9f1c); color: #1b1b1b; text-decoration: none; display: inline-block; text-align: center; transition: transform 0.1s;
+    }
+    .btn:active, .btn2:active { transform: scale(0.98); }
+    .btn2 { background: transparent; color: var(--pr); border: 1px solid var(--bd); }
+    .btn-out { background: linear-gradient(135deg, #e11d48, #fb7185); color: #fff; }
+    .mu, small { color: var(--mu); }
+    a { color: var(--pr); cursor: pointer; }
+    .tw { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: 9px 8px; border-bottom: 1px solid var(--bd); font-size: 14px; white-space: nowrap; }
+    th { background: color-mix(in srgb, var(--gd) 20%, transparent); font-size: 12px; text-transform: uppercase; }
+    td.ok, td.no, td.hf { font-weight: 700; text-align: center; }
+    td.ok { color: var(--ok); } td.no { color: var(--no); } td.hf { color: var(--wn); }
+    .tag { padding: 2px 10px; border-radius: 99px; font-size: 12px; background: color-mix(in srgb, var(--ok) 18%, transparent); color: var(--ok); }
+    .tag.p { background: color-mix(in srgb, var(--wn) 18%, transparent); color: var(--wn); }
+    .mg { display: grid; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 8px; }
+    .m { border-radius: 12px; padding: 8px; text-align: center; color: #fff; background: #94a3b8; }
+    .m.ok { background: #0e9f6e; } .m.no { background: #e11d48; } .m.hf { background: #e8590c; }
+    .m b { display: block; font: 600 13px var(--fd); } .m small { color: #fff; }
+    video { width: 100%; max-height: 260px; background: #000; border-radius: 12px; margin-bottom: 8px; display: none; }
+    .ov { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.55); display: grid; place-items: center; z-index: 20; padding: 16px; }
+    .qc { text-align: center; margin: 0; max-width: 360px; width: 100%; }
+    .qc #qr { display: grid; place-items: center; background: #fff; padding: 12px; border-radius: 12px; margin-bottom: 8px; }
+    .choose { flex: 1; display: grid; place-content: center; justify-items: center; text-align: center; padding: 24px; }
+    .choose img { width: 130px; height: 130px; border-radius: 50%; border: 4px solid var(--gd); }
+    .choose .grid { width: min(640px, 92vw); margin-top: 18px; }
+    .choose .card { width: min(360px, 92vw); text-align: left; }
+    .role { display: block; border-radius: 16px; padding: 20px; color: #fff; text-decoration: none; transition: transform 0.15s; }
+    .role:hover { transform: translateY(-2px); }
+    .role b { font: 800 18px var(--fd); display: block; } .role small { color: #fff; }
+    .r1 { background: linear-gradient(135deg, #2f5bea, #7c3aed); }
+    .r2 { background: linear-gradient(135deg, #0e9f6e, #0891b2); }
+    .r3 { background: linear-gradient(135deg, #ea580c, #db2777); }
+    #toast {
+      position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%);
+      background: #0b1b3a; color: #fff; padding: 10px 16px; border-radius: 10px; opacity: 0; transition: 0.2s;
+      pointer-events: none; z-index: 30; max-width: 90%; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
+    .toggle-group { display: flex; gap: 4px; background: var(--bg); border: 1px solid var(--bd); border-radius: 12px; padding: 4px; margin-bottom: 10px; }
+    .toggle-btn { flex: 1; border: 0; border-radius: 8px; padding: 8px; font: 600 13px var(--fb); cursor: pointer; background: transparent; color: var(--tx); text-align: center; }
+    .toggle-btn.active-in { background: var(--ok); color: #fff; }
+    .toggle-btn.active-out { background: var(--no); color: #fff; }
+    .storage-bar { width: 100%; height: 10px; background: var(--bd); border-radius: 5px; overflow: hidden; margin: 8px 0; }
+    .storage-fill { height: 100%; background: linear-gradient(90deg, #0e9f6e, #2f5bea); width: 0%; transition: width 0.3s; }
+    @media (max-width: 760px) {
+      .app { flex-direction: column; }
+      nav { width: auto; flex-direction: row; overflow-x: auto; padding: 10px; }
+      .brand, .who { display: none; }
+      main { padding: 14px; }
+      .clk { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app" id="app"><main><p class="mu">Loading 400MB+ Engine…</p></main></div>
+  <div id="toast"></div>
+  <div id="modal-root"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    const $ = s => document.querySelector(s);
+    const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const LOGO = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAgCQTZBgAAD//gAQTGF2YzYwLjMxLjEwMgD/2wBDAAgMDA4MDhAQEBAQEBMSExQUFBMTExMUFBQVFRUZGRkVFRUUFBUVGBgZGRscGxoaGRocHB4eHiQkIiIqKiszMz7/xACnAAACAwEBAQEAAAAAAAAAAAAABgUHBAMCAQgBAAEFAQEAAAAAAAAAAAAAAAAFBAMCAQYHEAACAQMCBAMEBwYDCQEBAAABAgMAEQQhEjETQQVhIlGRBnEyYqFSgUIUIxWSgrHRwTOyQxaD4XI0c/AkY1MHEQACAQMCAwYFAwMFAQAAAAABAgARIQMEEjFBUWEFcRMikYGhsTJCUhQj4dHBchVDkiSC/8AAEQgAnwCgAwEiAAIRAAMRAP/aAAwDAQACEQMRAD8AvyiiioZaFFFFEIUVxlLrG5jUO4UlEJ2hmtopbW1z1qM7XmPnYqyyokUoZ0liVw/LdGKlSdLHThRCTNRmH3DFzxIcaUS8pzG9gw2uOnmA+qpOqsxveBcb3kzu2zELFM8ZhbgFmMSXU/8Ac6fS+NEJadV/3afETv3Zo5N/Nbn7bSMqr5fJuUGx3Nca8aezIiusZYB3DFV6kLbdb4XFflP3o7o8vvBJPGf+jkjjj+MJufa+6tEJ+say5OTDhwyTzPsjjG52sTYfAAmssXcIJRiWbXLjMkQ9QEDn2A0h++ff17Zi/lYiDk5Itb/84Toznxb5V+89KISx8eeLKhSaFt8cihkaxFwetjY1prlF/hp08q6fdX13EaM7EAKCSWIAAA6k6AeNZCdKKhO1ZmRnYqzz44xy5JRRIJN0f4XuALbh0++puiEKKKKIQoooohCiiiiEKKKKIQr87d/zsz3Z94ZMnGP6eUiSvE1+XL+FwfRri4Yai9fomqZ//omFzMLGywNYJTGx+hKNPYyj21ohO8nvpihsDLjYmCUtDlwE/qQNoyyAdQPNqNGXxqmfeadJ+9Zk0ThlaRSjobggItiCKUq0JC8hAVSxPBQCWPwA1q/CZLB/2xzGyO3ZDrufDikjfzaTmQWLnTQ2C346iq6djIzOxuzEsT6km5PtpsxvdfvOV8mHIo9ZLR/5iD9VTP8AsP3fgRAp9DLr9SmmrarT4/uy4xen3Dj08Zbax5SHwveHJxcjtsjjenb1dEQGxdHvuBJvrYgDTgBUB3DOn7llS5U7bpJGv4KOir6Ko0FN03uZ3qEX5CP/AMsq6/vbaVcntmbh/wDUY00Xi6kL+98v11dc2JztXIhPTcK+3GYQRyl9w+9UGX3CKMTLFhYWPzp5Sbc2UIFCjqVVm0AF2YUhd394sn3mzYcDG3Q4ssyRheDy3YDfLboOITgOtzVWnxqzfcPC/M945xF1xomk/jbyL/Mn7qnpSZP0/GixIqKLKihQPQKLCulFFRzYUUUUQhRRRRCFFFFEIUUUUQhSt7yQRZPaMyKRlXdGdhb/APQeZAPEsAABqansnJixImmlNlX01LE6BVHVmOijqaT5JkSXHyO4bjNNIExMOMbzHfiwUfM6rrLJwUaL4wZMhSgUbnP2rWnxJ5AdZYD2lW9l9yZZ1WfOJx4zYiO4EhB+0TonwF2+FNc3de3+700+NhdsDHF5XOZ5EjkfmkBeVu3yTE3rxk5Pac3O7hB3t5EaCXl40BaVU5O0bZIUj+eRzc3NzwAr7h+6y5MXb5s5rmOOaOSOUHmvAzMccXBDJLGCDfiPl6VGUAq+dw3Y1BjXwH+WqYV6f1m/umV3mHLgwjKqwdxniWHJRRFNjqDukhYC93K6K3xpv7lmr23FnyiN3JTZEpNzJKfKi66kliPGvUeHAsUERSXK/LuHifIbmSIw0DbrA6cBepEo0lwyRv5t1nANm6EX6+NJ+bNjzPhCLkyIjF22YyVqB6bkAG97S4UgHgPEyp+091ye2p3OPOGVO8WMuei5KvG5a22VFDXtEsltpGlr054f7Xy4MeXJHb54ckI0kAjZeVG4vdXZnWQqLXBUX6GpyRI3ffNBE77Gj3Mo3ctvmS5GqnqOFLcnY8dojDj5eZhxN5WiWVnj5V7tHEGJ5e7hccBpapF1uiyOVYqmQ8RlXY1uVWH+ZmxgOzsitldj7B3ybKhwJRFkwavylJhOtuHyGx0JQg3qQ90e3nscmXi5QEc87qYm12zRov8ApseJBJJT5h6ViWNvdWfuGQweWFMXHx8G6oOazMxWL9MAMVb5mIDEampLBfNMsHa+8MmRJlwPkxsBtlx5Ea5jJX7I1RxYggin2xsV0JZAPsNz/wDLE1+BtKVrx95alFLuJkTQSrh5Z3MRfHn0/XUcVa2nOUcbaOPMOtMVTKwcAjgfgfAjkYQoooq8yFFFFEIUUUUQhRRUL3Wd4MVhEbSzMsEXg8htu/gF2+6sJCgk8AKn4QkHNkxzSTZ0x/8ATwN3LA15kq6PIB1IP6cfjc9agcvscncUXMyZzhdykkDYZEpKwbVJTHAsAbgM0lgTuvxGleO95nbcTHPZJpJcTm48fLySjGJXVrqGI14qCxHrqal+3Yua5gzO45mPmmJSMYYw/S3MNpmZrDe+3QWFhc0xRvKxvnzUQmrNX8UH2r7fMy5uaC8YITPyMdsuOD82EHMKAMFb6LEXF/QaXr3NzLhQ1nchb9fUnwsOFfY2O9mP4Vv8Sb2H1UOGU7wQXCgfxN8x8bUn6Wur/wDVlurXxYjdUAtu6Fm+Ukb0+kfE9ZtiTTUcALa8Trf/AIVmln2Sgbgb2tbrccPDwrAkhKdfOtwguSHI1C9bX18Kwyw5LsjkKu29l6nW92IPG/pwpVy5NqWJrym403NelO2TE+by1N4mewudtr/cDXJHSaNJY77XGlxYi3EEeBqNEcrWBHxAP97Ct5n0vIvJC+Wz6ezob0hanB/uGDIHHrQVxkD1VHLwPCOGAxFac+N57kWOaJoZo1micWZHFwf6eFVr3ntv7LMX7MQxS5waA52RkO3IFrjHRnLctpLbVY/AGrMr2Arq0b2Kt9pVYK3RrMCLg66ikHunvN8OQYM7EofSpb8G6Em9OXZKZMdRUcfrEvDgjxIYO1ZeUQ84EmEkjKcrGkRAxDOpKmz3MRGhF1p67flNkxESgLPCxinUcN6/iH0XFnXwNVFldrX3dzsPuk/5jORDK+VlM8e8yONsYWJnU7UuT5bn2U94ubjyz4ufjSczHzr47kgqRKm4xbgeBBDp94rvWJXIpC1V67jagP4n48PaNOUeaKKKcSsKKKKIQoooohClrLvL3PCisSIY5cgjxNo1P3BnplpQnQzZ+dGJOUzYEUSP9gyNN5vu4/dTbPTyyC2wEqNxparDra/CWHGLU8zdv7jJh92EWXg9wmLY8jqG5Mjf6LqblRw2sOuvrZyWCHEjTGgjEUUVwqC5Aub9daVsH3Y7TgSLMVlzJ0IYTTuTZgbhgosvHhcGmt2uSx+Ncn3zrcebGunwZQ7O4DheFOQr404GOMSEHcRympF8p4dG+P8A4Ki8/LXFQKCpcsDr6NoG9uhr3nZi40BaWOTl2AJQbrXFvwEsNNRpSw+MrIrF2kEUpsx+Y8DY39DY/EV1IUYMKr+hAvsKSigu/iZ1GTOiKqECQqpd38qLf1IF9OG0CoWDMyjlMi5DZPwSQKL/APOoIt68KeIRvWxAPjp9dRbtjYc5825yNTeyoCeLn5VX0vxPCkzexXma/KKYCg8BYe8ydxychOVFE2wyAkuNSLenDX+VJ8udlQGSATHLNrBfO4DXvwkQa36i410p4y58SXHkljniYx+cFXB4fA9eFQTmKQRZEb7rsn89euhHhUuFyhUGtzMdBkQ0pYHleNeBkNNEBJGYZFC3Q3GlvmAPAX6dKlK5qgBLbfN8t+JsOmldK4DvZFTWZggpcE/6iKmkgx/aJB917d2bJMWf3RgFhXlgSSlISbk/KCNzeHUdKgMHI/aHbu6TY0EUGJDKr4IjVVO7GszOUUabioNzrranWaDHyouTkwpPHuDhH4bhwNqjMfs/b8TJfKxl/LB43SfHW/JlUjQhOCsLdNLE6V3Gi7ywZ8ONGzKMuwVDWuPG3zjNbKkmlqx1jcSorrwdQw+DC9dKiO1Nu7fhn1x4v8gqXroZDCiiiiEKKKKIQpRn8vdZP/piREf7uWQH/OKbqV+6DlZGFkdN747nwmAK3/3iKP4qSO9MZy6LOo47d3/U1/xJcZo4neivlfa8hrS4t0inPMsZkRhobqbDre2mvx1qEii5EAg38wobFuJ9dfHWtOdBPMimBmDKfMFNjtPXUrp68fhUHt/I3DkndZjw+BbT06162XbLpsWStaote0kCvzjfBQORJm0gjblnWxsOhNL/AG+aXHSTmY8kjSMeY902Eg26tfaPS1hXibuXLPkZSOpqVhy8HkgOw6k3PEnU02Wo5R+4t/aJfc8ZJy0oxOX9rkyRAOPpIDZj8Kz4rmcKIwwVnVQp+1cKf6UxSdsgz5AUheBBqWuEJ+iqtbzHjqNB0r5B258LKhu27GjYvdVvJuHAMBfrqSvsp2XUAVrY16m3Tqekhrt3U/SZYYQ32gH+9fNRx0rtDMmsgYODwK6g/wBPhxr5JJzLaWtXAatEdXzvmPnu7HySL7d1BX9NuRjda8ALU4zhWXIflwTOfwxu3sUmtVQ/cbyQrAvzZMiQD4OfOfujDGkrT4zlzY0H5Oo+clNgfCMvbIzFgYiHiuPED8dgvUpXzhoK+17ZEmFFFFEIUUUUQhWDNxRmY0sBO0uvlb7LjVH/AIWANb6KwitjzhE/EnM8QZhtkUlJV+zKmjr7dR6gg1qKk/ia3oLD6xr9dcM+I4UxzUBMMlhlKPwkaLkAfRHlk+jY9K1Agi4NweBHA/CvI9fpW0OoZQPSb4zT8f7jhFNG3j6zhLz0iP5VI2luLKx2XHXz9D1r5P2sZWNvla+RYuHXVQSlii34qRpfiTrWqtCTOmmjD0P9jXS91964Rg8nUPtKmgY1oQep6iQOjBtyyk5YHmZYsf8AWZyBdRoLi9iTpw49AKZsXBxsBC+9HK/PNfy7+scZJsqr+JhqT7Kk8nC/JxySwH9Rhy1/T3N5yQqrqPMbhb1Ezdv/ADGIuNd+XHtLD8JawurbeJuCWPT0roQUdQceRciE03r2cfaTB95qQVIF1/r2yQg77gTPyY5EUiwLEi3jt4Cw9RpTWIVHzFGvr8tqoLJ7ZjwFh55D9AN5P3lANP8A27mwRx7TM6W1ikV2sbW8jjcw8Bw8KzJiAAIqfETVYkkWFOhj62NG3mT9N/tr/fow9Q1cYJzIzxuAJI7XAv5geDgHW3Q6mxqFjzJ1yLSpJEjBeWriw2cCR1vf11tWpoZfz6TxqTEUKSXstr9QGsTqAdBSFrtNjzY2LDayioagrYVpyrLcOYMnKyYa/ms55v8ATxAYkPRp3A5hH/bWyfFmrhkSSXTHg1nlvsvqIkHzTP8ARTp9prCmjFxo8SFIY77UHE8WJ1ZmPVmNyT6mmncWiLOdSw9K1GPtPNvh9ZBme233myiiivQIxhRRRRCFFFFEIUVDd0z17bitMRuPyov2mPD7upqlH7nn5sm555NeCqSqjwAFqa5c64u0yRULz9CEX0OtJkuO/ayWjVpMPiUUFnxvUqBq8P0R5k6XHBXxecFuZZf32/rUp+0MvHvtlL+EvmHt0b6657Pq9HrlOHMrL0YX2nqDHS4ci3Ug9kYY5ElRXRldWFwym4I8DXWkF+4xK7SIrYMzG7bRzcWU+skWjKT9tLN63rdF3+IaZKcv/wCsJM0J8fKBKnwdBb1rjtR3blxGuP8AmTkycfivH2qJOG6gqe2O8aLIyC5BVt9/h0+upN0BB0Wx9aWcTueLLrBPBLfoJFv7L3qZ/Mv9kfXXU9394aTTaVMeVgjitV2P152NzzjV0ctUX+Mih2nE5nM5QJBuBrtv62JNz8a1PFEugWx8P/NK7SZgQXk5aD1Zgv1k0tTd8wN21ZRO/DZB+qfvYeQfFmApxqu9UfFTR/yZCQKbHNB1Fqe81VYH1WHiJLrGFO7Vmtbcxubeg9PutWSXIbmciBOfkH8F/LGD+OZvwL4fM34RWDnNP/jZMODH1WORZchh6FxeOL+HefEV0/bfa+2x8rFRn1udoI3N9p5H1Zj1JuaS8Pd+bUuMuvy0A/493qPZQWUeF5ctSyKT20jPg4K4gZmbmzS2MspFtxHBVH4Y1/CvTrrUtVWP7wZuQf0hHCPhvPtbT6q4v3DuSjcMhv3V/pXU/vdNh2otQBYACgAkXkZDc/WWzRVTYvvPkQyBcoLInAso2sPHTQ1ayOsiq6m6sAQfUHhT/HlXKKr85AyleM90UUVPKSksx+9YLfrz5CgnR1a6H7xp7amsOfNki3/m5T8SP6VZkxiWNjNsCW82+223jfSqp7hl4ayMMK4WxLbQdhP0P+GlcvrseoxKDjzHiOZr7R/jdGsUEXu9dwyZoG5snMEJ8nlUXdtPNYC4FdsOCPDTmZE29fINVF9x0soQXbcTYCxNQc4OVE8JO0twuOBBuL/fxrSez5uaTMEjEqiHagk0blm7FmG2xbgttRaqU8/GFyZQhLEOxpupRdoHSt78OsdEKn2rysOXOsdB3Pto5aicXk27RtfXc20X8th5htN7WPGl9e4wpHeedGYtKdyq4GxZCoHyjVdAajsrtWVHIrCCPHQCK6cxyFKz80+Yht3xvqahZ8HIeMKpiJ/9gHz6ASyBwfl+4im+HQaa38/3UJLbNy0rbjbtgrMKnbXwrGZnhyWdEbcU0bQ2Hhe1ja/SsUc+JGCWktZgNQ97kXGm2+o1B4GvGNDJHkSyaIJEsQrXDPfR7dNOPjWHG7ZmcxHYo1pImYmRiTyy1zqOoOg4Cni4MQ3g59qqqkXWpJFx0t2SUs1vRck+EnY1wMucxlIpGF73TjY2NmsL2OhsdK+MnZGblo+x92zaDOBu3bbdANa5YWC+LkFnRCA8hSTexYq5vt2fKtup61gPacx5y45IBlLj9TUDnCTht41D5WJ8rD92QqopUkpRieIvW3zkbVoP4xUnpPrQYCLK10umnnUltzDy2VwWN+mljWrCyIDHjpIy810UkbbDcwJA0G0EgaCsH7IzdzO7Rs90YEys28qXBuSDtuGuOg4V8j7ZPjWZ1jeyRm+9/wBOSIEXCC2+/T0p8cWA4yv7lS3EbSv6ft5WrczFqDXy7eEke7Sy48cbxaKCTIABqot4dCaj2yIURvMGkWPdYg6sFDEXta+tyBwFSv6k0MQmCkmF1lHDzOgFrfHj6Uvfsyd7rdAP1HB3a7niC7eHAHr6VFplwnGq5WXGyMdxqPWK8z2cPiJI+4GqgkEWHSbsvJlx8fGlifYZBr5Ab/p7vlYHr9VNn5/FKpHLIiymNWcKCVDFNxAYAre1yFvcjhS3lY2RJDiKoj3xDzAuQP8AD26HbrWCDtGR5YldHUFJC1zfckTJstY6XPH0qBtPps+LGWypiZWyVII3EbrV7APetpVi6sbEig8OE6T5OJKwCTA7iLaML3Nh+G1r1YPb+9z4mOmMYkdo9AzOflPAWA6cONV9kdnzFEN1jGyGBG85GsT7jby+nCpJ5QHFiAb24+tWbJ5ATyMm+qmtdppQ9kqEXJXeKUliy99y0Tdyofa39aiV96svdb8tE/gpe/1Xr32rtsfdIt8s2imxjQ+b+Inh91WDi4GLhLaCJU8eLH4sdad6b95lG53oOtB9IzfyVsFPvKb94u8/tGZYMckwxniP9R/W3oOlQwlGKqs/lBFjcHrV/wCNgYuIu2CCOMeC6n4k3J9taJIIZhtkjRwejKD/ADqfLpHy3LDt4yJXVaWNp+cIpFeTcrAinzG7njYi3dix9EG4/wBh9dMeV7rYE9zFvx2+gbr+6f7GkrJ91M+C5jeOZR47D7G0+ukvNpCGG40pHoyq4m7I73DlCyxTDxO0/wAjUT27Gjz89ImvsO4tbQ2UX+6vWCqYwkWZLMvHgfrFxTH7twc3KnylFo0BjHizW6eAH1020wR9QcYB4itec1m2KadJKSe7EX+lkSJ4OA4/sah5uydwg1TZMPokq3sP9atSil/J3fhfqPn9Y1XU5Bzr4yl35kGksUkberK1vbwrzz9Lg3q6q5cqPjsT90f0pNbujo4PiJOdXu4r85RL5cl7WY/wn+wrXHI8otyZmPgjn+1XdtHoPZXqrjupbeoDwEP3lPxlPRdlz8k35YhX1lNj+7xpji92bD9TKcn0RAo+u5p+op+nd+ICjVb5SBtTkPC0/POWpimKAnysRxJ4G1Nnbc/Gx7LJJy/irW9oFqhe4KIO6Tq/27j4NqP51yy3i0IFcxk2hwhHtSKP3jjG/ubq6blYMCNCDcH7xVZDbzTutb+lMmL2vPzB+kAqnqXAHsBJpgg9zUYhsvIZj9mK6j946/VTvT4GO4Ai8iLhBQ3lZrPPjSGaB3iJYkFSRpfr/wAavHsHdh3PGG8jnx6SDhf0YDxroPdztoTZymI9S7E+29LOT7uy9vf8126Uho/Ny3PEDiA3A/BqWsYyYDVlt2EcP7xg21+Bn//Z";
+
+    const DB_NAME = "VictoryTuitionDB_V2";
+    const DB_VERSION = 1;
+    const STORES = ["config", "notices", "students", "attendance", "fees", "alerts", "exams", "expenses", "tpay", "staff", "staffatt", "portal_info", "portal_att", "portal_fees", "portal_exams"];
+    
+    let idb = null;
+    const CACHE = {};
+    STORES.forEach(s => CACHE[s] = new Map());
+
+    function initDB() {
+      return new Promise((resolve, reject) => {
+        const req = indexedDB.open(DB_NAME, DB_VERSION);
+        req.onupgradeneeded = e => {
+          const d = e.target.result;
+          STORES.forEach(st => {
+            if (!d.objectStoreNames.contains(st)) d.createObjectStore(st, { keyPath: "id" });
+          });
+        };
+        req.onsuccess = async e => {
+          idb = e.target.result;
+          await hydrateCache();
+          resolve();
+        };
+        req.onerror = e => reject(e.target.error);
+      });
+    }
+
+    async function hydrateCache() {
+      const tx = idb.transaction(STORES, "readonly");
+      await Promise.all(STORES.map(st => new Promise(res => {
+        const req = tx.objectStore(st).getAll();
+        req.onsuccess = () => {
+          CACHE[st].clear();
+          (req.result || []).forEach(item => CACHE[st].set(item.id, item));
+          res();
+        };
+        req.onerror = () => res();
+      })));
+    }
+
+    function genId() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
+
+    const db = {
+      set(store, id, data) {
+        const rec = { ...data, id };
+        CACHE[store].set(id, rec);
+        syncArrays();
+        return new Promise((resolve, reject) => {
+          const tx = idb.transaction(store, "readwrite");
+          tx.objectStore(store).put(rec);
+          tx.oncomplete = () => resolve(rec);
+          tx.onerror = e => reject(e.target.error);
+        });
+      },
+      add(store, data) { return this.set(store, genId(), data); },
+      update(store, id, partial) {
+        const existing = CACHE[store].get(id);
+        if (!existing) return Promise.resolve(null);
+        return this.set(store, id, { ...existing, ...partial });
+      },
+      delete(store, id) {
+        CACHE[store].delete(id);
+        syncArrays();
+        return new Promise((resolve, reject) => {
+          const tx = idb.transaction(store, "readwrite");
+          tx.objectStore(store).delete(id);
+          tx.oncomplete = () => resolve();
+          tx.onerror = e => reject(e.target.error);
+        });
+      },
+      get(store, id) { return CACHE[store].get(id) || null; },
+      getAll(store) { return Array.from(CACHE[store].values()); }
+    };
+
+    let page = "", R = "", S = [], N = [], A = [], F = [], O = [], E = [], X = [], P = [], C = [], SA = [];
+    let rm = "", stream = null, timer = null, last = { c: "", t: 0 }, rt = null, AH = undefined, SESS = { a: false, t: "" };
+    let currentPortalCode = "";
+    let scanMode = "in";
+
+    const today = () => new Date().toLocaleDateString("en-CA");
+    const month = () => today().slice(0, 7);
+    const now = () => new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    const wa = p => {
+      let d = String(p).replace(/\D/g, "");
+      if (d.startsWith("0")) d = "94" + d.slice(1);
+      return d;
+    };
+    const role = () => {
+      const h = location.hash.slice(1);
+      return ["admin", "teacher", "student"].includes(h) ? h : "";
+    };
+    const MN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const T = {
+      ov: "Overview", nb: "Notice board", st: "Students", tc: "Teachers",
+      at: "Attendance", fe: "Fees & months", ex: "Exam results", xp: "Expenses",
+      tp: "Teacher payments", rp: "Reports", al: "Parent alerts", ta: "My attendance",
+      sv: "My portal", bk: "Storage & Settings"
+    };
+    const TABS = {
+      admin: ["ov", "nb", "st", "tc", "at", "fe", "ex", "xp", "tp", "rp", "al", "bk"],
+      teacher: ["at", "ta", "ex", "nb"],
+      student: ["sv"]
+    };
+
+    function syncArrays() {
+      N = db.getAll("notices");
+      S = db.getAll("students");
+      A = db.getAll("attendance");
+      F = db.getAll("fees");
+      O = db.getAll("alerts");
+      E = db.getAll("exams");
+      X = db.getAll("expenses");
+      P = db.getAll("tpay");
+      C = db.getAll("staff");
+      SA = db.getAll("staffatt");
+      const cfg = db.get("config", "admin");
+      AH = cfg ? (cfg.h || "") : "";
+      refresh();
+    }
+
+    const sum = (a, f) => a.reduce((t, x) => t + f(x), 0);
+    const monthSum = (sid, m) => sum(F.filter(f => f.sid === sid && f.month === m), f => f.amount);
+    const stat = (l, v) => `<div class="stat"><small>${l}</small><b>${v}</b></div>`;
+
+    function alertP(s, msg, key) {
+      db.add("alerts", { sid: s.id, to: s.phone, parent: s.parent, msg, key: key || "", status: "pending", ts: Date.now() }).then(item => {
+        const autoSend = db.get("config", "auto_whatsapp");
+        const url = `https://wa.me/${wa(s.phone)}?text=${encodeURIComponent(msg)}`;
+        if (autoSend && autoSend.enabled) {
+          window.open(url, "_blank");
+          db.update("alerts", item.id, { status: "sent" });
+        }
+      });
+    }
+
+    const fail = e => toast("Couldn’t save: " + (e && e.message || "storage error"));
+
+    function toast(m) {
+      const t = $("#toast");
+      t.textContent = m;
+      t.style.opacity = 1;
+      clearTimeout(toast.t);
+      toast.t = setTimeout(() => t.style.opacity = 0, 2800);
+    }
+
+    function askConfirm(message, onConfirm) {
+      const root = $("#modal-root");
+      root.innerHTML = `<div class="ov" onclick="closeModal()">
+        <div class="card qc" onclick="event.stopPropagation()">
+          <h3>Confirm Action</h3>
+          <p>${esc(message)}</p>
+          <div class="row" style="margin-top:14px">
+            <button class="btn" id="cfm-yes">Yes, Proceed</button>
+            <button class="btn2" onclick="closeModal()">Cancel</button>
+          </div>
+        </div>
+      </div>`;
+      $("#cfm-yes").onclick = () => { closeModal(); onConfirm(); };
+    }
+    function closeModal() { $("#modal-root").innerHTML = ""; }
+
+    const noticeList = () => N.slice().sort((a, b) => b.ts - a.ts).map(n => `
+      <div class="card">
+        <h3>${esc(n.title)}</h3>
+        <p>${esc(n.body)}</p>
+        <small>${new Date(n.ts).toLocaleString()}${R === "admin" ? ` · <a onclick="del('notices','${n.id}')">Delete</a>` : ""}</small>
+      </div>`).join("") || `<p class="mu">No notices yet.</p>`;
+
+    const chooser = () => `
+      <main class="choose">
+        <img src="${LOGO}" alt="Victory Academy logo">
+        <h1>Victory Tuition Centre</h1>
+        <p class="mu">Genius are made, not born.</p>
+        <div class="grid">
+          <a class="role r1" href="#admin"><b>Admin</b><small>🔒 PIN required</small></a>
+          <a class="role r2" href="#teacher"><b>Teacher</b><small>🔒 PIN required</small></a>
+          <a class="role r3" href="#student"><b>Student</b><small>My attendance, fees &amp; results</small></a>
+        </div>
+      </main>`;
+
+    function go(k) { stopCam(); page = k; render(); }
+
+    function render() {
+      R = role();
+      if (!R) { $("#app").innerHTML = chooser(); return; }
+      if (!idb) { $("#app").innerHTML = `<main><p class="mu">Initializing database…</p></main>`; return; }
+      if ((R === "admin" && !SESS.a) || (R === "teacher" && !SESS.t)) {
+        $("#app").innerHTML = gate();
+        return;
+      }
+      const tabs = TABS[R];
+      if (!tabs.includes(page)) page = tabs[0];
+      $("#app").innerHTML = `
+        <nav>
+          <div class="brand">
+            <img src="${LOGO}" alt="Victory Academy logo">
+            <div>Victory Tuition Centre<small>Genius are made, not born.</small></div>
+          </div>
+          ${tabs.map(k => `<a class="${k === page ? "on" : ""}" onclick="go('${k}')">${T[k]}</a>`).join("")}
+          <a onclick="logout()">⇄ Log out / switch</a>
+          <small class="who">${R} mode · 400MB+ Ready</small>
+        </nav>
+        <main>${pages[page]()}</main>`;
+
+      if (page === "at") listAtt();
+      if (page === "sv" && currentPortalCode) openCode(currentPortalCode);
+      if (page === "bk") updateStorageStats();
+      const c = $("#clk");
+      if (c) c.textContent = new Date().toLocaleTimeString();
+    }
+
+    function refresh() {
+      clearTimeout(rt);
+      rt = setTimeout(function f() {
+        const a = document.activeElement;
+        if (a && /INPUT|TEXTAREA|SELECT/.test(a.tagName) && a.value) {
+          rt = setTimeout(f, 800);
+          return;
+        }
+        if (page === "at" && stream) listAtt();
+        else render();
+      }, 60);
+    }
+
+    const pages = {
+      ov() {
+        const d = today();
+        const p = A.filter(a => a.date === d).length;
+        const c = sum(F.filter(f => f.month === month()), f => f.amount);
+        const u = O.filter(o => o.status !== "sent").length;
+        return `
+          <div class="hero">
+            <div><small style="color:#c9d4f5">${new Date().toDateString()}</small><h2>Welcome back, Admin</h2></div>
+            <div class="clk" id="clk"></div>
+            <button class="btn" onclick="go('at')">Take attendance</button>
+          </div>
+          <div class="grid">
+            ${stat("Students", S.length)}
+            ${stat("Present today", p + " / " + S.length)}
+            ${stat("Collected this month", "LKR " + c.toLocaleString())}
+            ${stat("Parent alerts to send", u)}
+          </div>`;
+      },
+      nb() {
+        return `
+          <h1>Notice board</h1>
+          ${R === "admin" ? `<div class="card"><h3>Post a notice (admin only)</h3><input id="nt" placeholder="Title"><textarea id="nm" placeholder="Write a notice for everyone…"></textarea><button class="btn" onclick="postN()">Post notice</button></div>` : ""}
+          ${noticeList()}`;
+      },
+      st() {
+        return `
+          <h1>Students</h1>
+          <div class="card">
+            <h3>Add student</h3>
+            <div class="row"><input id="sn" placeholder="Student name"><input id="sg" placeholder="Grade"></div>
+            <div class="row"><input id="sp" placeholder="Parent / guardian"><input id="sph" placeholder="Parent phone (e.g. 0771234567)" inputmode="tel"></div>
+            <div class="row"><input id="sf" type="number" placeholder="Monthly fee (LKR)"></div>
+            <button class="btn" onclick="addS()">Save student</button>
+          </div>
+          <div class="card tw">
+            <table>
+              <tr><th>Name</th><th>Grade</th><th>Parent</th><th>Phone</th><th>Fee</th><th>QR / Code</th><th></th></tr>
+              ${S.map(s => `<tr>
+                <td>${esc(s.name)}</td><td>${esc(s.grade)}</td><td>${esc(s.parent)}</td><td>${esc(s.phone)}</td><td>${(s.fee || 0).toLocaleString()}</td>
+                <td><a onclick="showQR('${s.id}')">${esc(s.code)}</a></td>
+                <td><a onclick="delStudent('${s.id}')">Remove</a></td>
+              </tr>`).join("") || `<tr><td colspan="7" class="mu">No students yet.</td></tr>`}
+            </table>
+          </div>`;
+      },
+      tc() {
+        const d = today();
+        return `
+          <h1>Teachers</h1>
+          <div class="card">
+            <h3>Add teacher</h3>
+            <div class="row">
+              <input id="tn" placeholder="Teacher name">
+              <input id="tph" placeholder="Phone">
+              <input id="tpn" type="password" placeholder="PIN (4–6 digits)" inputmode="numeric" maxlength="6">
+            </div>
+            <button class="btn" onclick="addT()">Save teacher</button>
+          </div>
+          <div class="card tw">
+            <h3>Teacher attendance · ${d}</h3>
+            <table>
+              <tr><th>Teacher</th><th>In</th><th>Out</th><th>Days this month</th><th></th></tr>
+              ${C.map(t => {
+                const a = SA.find(x => x.id === d + "_" + t.id);
+                return `<tr>
+                  <td>${esc(t.name)}</td><td>${a ? a.in : "–"}</td><td>${(a && a.out) || "–"}</td>
+                  <td>${SA.filter(x => x.tid === t.id && x.date.slice(0, 7) === month()).length}</td>
+                  <td><a onclick="del('staff','${t.id}')">Remove</a></td>
+                </tr>`;
+              }).join("") || `<tr><td colspan="5" class="mu">No teachers yet.</td></tr>`}
+            </table>
+          </div>`;
+      },
+      at() {
+        return `
+          <h1>Attendance Scanner</h1>
+          <div class="card">
+            <h3>Select Mode</h3>
+            <div class="toggle-group">
+              <button class="toggle-btn ${scanMode === 'in' ? 'active-in' : ''}" onclick="setScanMode('in')">🟢 Check-IN Mode</button>
+              <button class="toggle-btn ${scanMode === 'out' ? 'active-out' : ''}" onclick="setScanMode('out')">🔴 Check-OUT Mode</button>
+            </div>
+            <p class="mu" id="mode-desc">${scanMode === 'in' ? 'Scanning will mark student arrival time.' : 'Scanning will mark student departure time (Check-OUT).'}</p>
+            <video id="vid" playsinline muted></video>
+            <div class="row">
+              <button class="btn" onclick="cam()">Start camera</button>
+              <button class="btn2" onclick="stopCam()">Stop</button>
+            </div>
+            <div class="row" style="margin-top:10px">
+              <input id="cd" placeholder="Scan with USB scanner or type card code" onkeydown="if(event.key==='Enter')markAtt(this.value)">
+              <button class="btn ${scanMode === 'out' ? 'btn-out' : ''}" onclick="markAtt($('#cd').value)">${scanMode === 'in' ? 'Mark Check-IN' : 'Mark Check-OUT'}</button>
+            </div>
+          </div>
+          <div class="card" id="attlist"></div>`;
+      },
+      ta() {
+        const d = today();
+        return `
+          <h1>My attendance</h1>
+          <div class="card">
+            <h3>Teacher check-in / check-out</h3>
+            <p>Signed in as <b>${esc((C.find(x => x.id === SESS.t) || {}).name || "")}</b></p>
+            <input id="tpi" type="password" inputmode="numeric" maxlength="6" placeholder="PIN (leave empty to use fingerprint)">
+            <div class="row">
+              <button class="btn" onclick="staffMark('in')">Check in</button>
+              <button class="btn2" onclick="staffMark('out')">Check out</button>
+            </div>
+            <small>Fingerprint uses this device’s biometric sensor. First time registers, after that it verifies.</small>
+          </div>
+          <div class="card tw">
+            <h3>Today</h3>
+            <table>
+              <tr><th>Teacher</th><th>In</th><th>Out</th><th>Method</th></tr>
+              ${SA.filter(x => x.date === d).map(a => `<tr><td>${esc(a.name)}</td><td>${a.in}</td><td>${a.out || "–"}</td><td>${esc(a.method)}</td></tr>`).join("") || `<tr><td colspan="4" class="mu">No check-ins yet.</td></tr>`}
+            </table>
+          </div>`;
+      },
+      fe() {
+        const m = month();
+        const out = sum(S, s => Math.max(0, (s.fee || 0) - monthSum(s.id, m)));
+        return `
+          <h1>Fees & months</h1>
+          <div class="grid">
+            ${stat("Collected this month", "LKR " + sum(F.filter(f => f.month === m), f => f.amount).toLocaleString())}
+            ${stat("Unpaid this month", "LKR " + out.toLocaleString())}
+          </div>
+          <div class="card">
+            <h3>Record payment</h3>
+            <select id="fs" onchange="const s=S.find(x=>x.id===this.value);$('#fa').value=s?s.fee:''">
+              <option value="">Choose student</option>
+              ${S.map(s => `<option value="${s.id}">${esc(s.name)}</option>`).join("")}
+            </select>
+            <div class="row">
+              <input id="fa" type="number" placeholder="Amount (LKR)">
+              <input id="fm" type="month" value="${m}">
+              <select id="fx"><option>Cash</option><option>Bank transfer</option><option>Card</option></select>
+            </div>
+            <button class="btn" onclick="addF()">Save & notify parent</button>
+          </div>
+          <div class="card tw">
+            <h3>Month by month · ${today().slice(0, 4)}</h3>
+            <table>
+              <tr><th>Student</th>${MN.map(n => `<th>${n}</th>`).join("")}</tr>
+              ${S.map(mrow).join("") || `<tr><td colspan="13" class="mu">No students yet.</td></tr>`}
+            </table>
+            <div class="row" style="margin-top:10px">
+              <input id="nm2" type="month" value="${m}">
+              <button class="btn" onclick="notifyMonth()">Notify unpaid parents</button>
+            </div>
+            <small>✓ paid · ½ part paid · ✕ unpaid</small>
+          </div>
+          <div class="card tw">
+            <h3>Payment history</h3>
+            <table>
+              <tr><th>Receipt</th><th>Student</th><th>Month</th><th>Amount</th><th>Method</th></tr>
+              ${F.slice().sort((a, b) => b.ts - a.ts).slice(0, 100).map(f => `<tr><td>${f.rc}</td><td>${esc(f.name)}</td><td>${f.month}</td><td>${f.amount.toLocaleString()}</td><td>${esc(f.method)}</td></tr>`).join("") || `<tr><td colspan="5" class="mu">No payments yet.</td></tr>`}
+            </table>
+          </div>`;
+      },
+      ex() {
+        return `
+          <h1>Exam results</h1>
+          <div class="card">
+            <h3>Add result</h3>
+            <select id="es">
+              <option value="">Choose student</option>
+              ${S.map(s => `<option value="${s.id}">${esc(s.name)}</option>`).join("")}
+            </select>
+            <div class="row">
+              <input id="en" placeholder="Exam (e.g. Term 1 test)">
+              <input id="ej" placeholder="Subject">
+            </div>
+            <div class="row">
+              <input id="ek" type="number" placeholder="Marks">
+              <input id="eo" type="number" placeholder="Out of" value="100">
+            </div>
+            <button class="btn" onclick="addE()">Save & notify parent</button>
+          </div>
+          <div class="card tw">
+            <table>
+              <tr><th>Date</th><th>Student</th><th>Exam</th><th>Subject</th><th>Marks</th><th>%</th></tr>
+              ${E.slice().sort((a, b) => b.ts - a.ts).slice(0, 100).map(e => `<tr><td>${new Date(e.ts).toLocaleDateString()}</td><td>${esc(e.name)}</td><td>${esc(e.exam)}</td><td>${esc(e.subject)}</td><td>${e.marks}/${e.total}</td><td>${Math.round(e.marks / e.total * 100)}%</td></tr>`).join("") || `<tr><td colspan="6" class="mu">No results yet.</td></tr>`}
+            </table>
+          </div>`;
+      },
+      xp() {
+        const l = X.filter(x => x.date.slice(0, 7) === month());
+        return `
+          <h1>Expenses</h1>
+          <div class="grid">${stat("This month", "LKR " + sum(l, x => x.amount).toLocaleString())}</div>
+          <div class="card">
+            <h3>Add expense</h3>
+            <div class="row">
+              <input id="xt" placeholder="What for? (rent, electricity…)">
+              <input id="xa" type="number" placeholder="Amount (LKR)">
+            </div>
+            <div class="row">
+              <select id="xc"><option>Rent</option><option>Utilities</option><option>Stationery</option><option>Marketing</option><option>Other</option></select>
+              <input id="xd" type="date" value="${today()}">
+            </div>
+            <button class="btn" onclick="addX()">Save expense</button>
+          </div>
+          <div class="card tw">
+            <table>
+              <tr><th>Date</th><th>Item</th><th>Category</th><th>Amount</th><th></th></tr>
+              ${X.slice().sort((a, b) => b.date.localeCompare(a.date)).slice(0, 100).map(x => `<tr><td>${x.date}</td><td>${esc(x.title)}</td><td>${esc(x.cat)}</td><td>${x.amount.toLocaleString()}</td><td><a onclick="del('expenses','${x.id}')">Delete</a></td></tr>`).join("") || `<tr><td colspan="5" class="mu">No expenses yet.</td></tr>`}
+            </table>
+          </div>`;
+      },
+      tp() {
+        return `
+          <h1>Teacher payments</h1>
+          <div class="grid">${stat("Paid this month", "LKR " + sum(P.filter(p => p.date.slice(0, 7) === month()), p => p.amount).toLocaleString())}</div>
+          <div class="card">
+            <h3>Record payment</h3>
+            <div class="row">
+              <input id="pt" placeholder="Teacher name">
+              <input id="pa" type="number" placeholder="Amount (LKR)">
+            </div>
+            <div class="row">
+              <input id="pn" placeholder="Note (e.g. October salary)">
+              <input id="pd" type="date" value="${today()}">
+            </div>
+            <button class="btn" onclick="addP()">Save payment</button>
+          </div>
+          <div class="card tw">
+            <table>
+              <tr><th>Date</th><th>Teacher</th><th>Note</th><th>Amount</th><th></th></tr>
+              ${P.slice().sort((a, b) => b.date.localeCompare(a.date)).slice(0, 100).map(p => `<tr><td>${p.date}</td><td>${esc(p.teacher)}</td><td>${esc(p.note)}</td><td>${p.amount.toLocaleString()}</td><td><a onclick="del('tpay','${p.id}')">Delete</a></td></tr>`).join("") || `<tr><td colspan="5" class="mu">No payments yet.</td></tr>`}
+            </table>
+          </div>`;
+      },
+      rp() {
+        const m = rm;
+        const col = sum(F.filter(f => f.month === m), f => f.amount);
+        const exp = sum(X.filter(x => x.date.slice(0, 7) === m), x => x.amount);
+        const tpd = sum(P.filter(p => p.date.slice(0, 7) === m), p => p.amount);
+        const due = S.map(s => ({ s, d: Math.max(0, (s.fee || 0) - monthSum(s.id, m)) })).filter(o => o.d > 0);
+        return `
+          <h1>Reports</h1>
+          <input type="month" value="${m}" onchange="rm=this.value||month();render()" style="max-width:200px">
+          <div class="grid">
+            ${stat("Money collected", "LKR " + col.toLocaleString())}
+            ${stat("Expenses", "LKR " + exp.toLocaleString())}
+            ${stat("Teacher payments", "LKR " + tpd.toLocaleString())}
+            ${stat("Net cash", "LKR " + (col - exp - tpd).toLocaleString())}
+          </div>
+          <div class="card tw">
+            <h3>Not paid yet · ${m}</h3>
+            <table>
+              <tr><th>Student</th><th>Parent phone</th><th>Balance</th><th></th></tr>
+              ${due.map(o => `<tr>
+                <td>${esc(o.s.name)}</td><td>${esc(o.s.phone)}</td><td>${o.d.toLocaleString()}</td>
+                <td><a href="https://wa.me/${wa(o.s.phone)}?text=${encodeURIComponent(`Dear ${o.s.parent || "parent"}, the fee balance for ${o.s.name} (${m}) is LKR ${o.d.toLocaleString()}. Thank you – Victory Tuition Centre.`)}" target="_blank" rel="noopener">Remind</a></td>
+              </tr>`).join("") || `<tr><td colspan="4" class="mu">${S.length ? "Everyone has paid." : "No students yet."}</td></tr>`}
+            </table>
+          </div>`;
+      },
+      al() {
+        return `
+          <h1>Parent alerts</h1>
+          <p class="mu">Every scan, payment, result and reminder creates a message here. Tap WhatsApp to send it.</p>
+          ${O.slice().sort((a, b) => b.ts - a.ts).slice(0, 100).map(o => `
+            <div class="card">
+              <span class="tag ${o.status === "sent" ? "" : "p"}">${o.status === "sent" ? "Sent" : "Pending"}</span>
+              <small>${new Date(o.ts).toLocaleString()} · ${esc(o.parent)} · ${esc(o.to)}</small>
+              <p>${esc(o.msg)}</p>
+              <a class="btn" href="https://wa.me/${wa(o.to)}?text=${encodeURIComponent(o.msg)}" target="_blank" rel="noopener" onclick="sent('${o.id}')">Send on WhatsApp</a>
+              <button class="btn2" onclick="sent('${o.id}')">Mark sent</button>
+            </div>`).join("") || `<p class="mu">No alerts yet.</p>`}`;
+      },
+      sv() {
+        return `
+          <h1>My portal</h1>
+          <div class="card">
+            <h3>Enter your student code</h3>
+            <div class="row">
+              <input id="sc" placeholder="e.g. STU-AB12CD" value="${esc(currentPortalCode)}">
+              <button class="btn" onclick="openCode()">Open</button>
+            </div>
+          </div>
+          <div id="sdata"></div>
+          <h3>Notices</h3>
+          ${noticeList()}`;
+      },
+      bk() {
+        const auto = db.get("config", "auto_whatsapp");
+        const autoEnabled = auto ? auto.enabled : false;
+        return `
+          <h1>Storage & Admin Settings</h1>
+          <div class="card">
+            <h3>Change Admin PIN</h3>
+            <div class="row">
+              <input id="new-pin" type="password" inputmode="numeric" maxlength="6" placeholder="Enter new 4–6 digit PIN">
+              <button class="btn" onclick="changeAdminPin()">Update PIN</button>
+            </div>
+          </div>
+          <div class="card">
+            <h3>WhatsApp Auto-Popup Setting</h3>
+            <label style="display:flex;align-items:center;gap:10px;cursor:pointer;margin-top:8px">
+              <input type="checkbox" id="auto-wa-chk" ${autoEnabled ? "checked" : ""} onchange="toggleAutoWhatsApp(this.checked)" style="width:20px;height:20px">
+              <span>Automatically open WhatsApp message tabs instantly when actions occur</span>
+            </label>
+          </div>
+          <div class="card">
+            <h3>High-Capacity IndexedDB Status</h3>
+            <p class="mu" id="storage-info">Calculating storage capacity…</p>
+            <div class="storage-bar"><div class="storage-fill" id="storage-fill" style="width:1%"></div></div>
+            <small>All student records, attendance logs, fee receipts, and exam results are stored locally in IndexedDB (supports 400MB+ effortlessly with zero lag).</small>
+          </div>
+          <div class="card">
+            <h3>Full Backup & Restore</h3>
+            <p class="mu">Download a complete backup file of your centre’s data so nothing is ever lost.</p>
+            <div class="row">
+              <button class="btn" onclick="exportBackup()">⬇ Download Full Backup (.json)</button>
+              <button class="btn2" onclick="$('#imp-file').click()">⬆ Restore From Backup</button>
+              <input type="file" id="imp-file" accept=".json" style="display:none" onchange="importBackup(this)">
+            </div>
+          </div>`;
+      }
+    };
+
+    function mrow(s) {
+      const y = today().slice(0, 4);
+      return `<tr><td>${esc(s.name)}</td>${MN.map((n, i) => {
+        const k = y + "-" + String(i + 1).padStart(2, "0");
+        const p = monthSum(s.id, k);
+        return k > month() ? `<td class="mu">·</td>` : p >= (s.fee || 1) ? `<td class="ok">✓</td>` : p > 0 ? `<td class="hf">½</td>` : `<td class="no">✕</td>`;
+      }).join("")}</tr>`;
+    }
+
+    function postN() {
+      const t = $("#nt").value.trim(), b = $("#nm").value.trim();
+      if (!t || !b) return toast("Add a title and message.");
+      db.add("notices", { title: t, body: b, ts: Date.now() }).then(() => {
+        $("#nt").value = ""; $("#nm").value = "";
+        toast("Notice posted.");
+      }).catch(fail);
+    }
+
+    const del = (c, id) => {
+      askConfirm("Are you sure you want to delete this record?", () => {
+        db.delete(c, id).then(() => toast("Deleted.")).catch(fail);
+      });
+    };
+
+    function delStudent(id) {
+      const s = S.find(x => x.id === id);
+      askConfirm(`Remove student ${s ? s.name : ""}?`, () => {
+        db.delete("students", id).then(() => {
+          if (s) db.delete("portal_info", s.code);
+          toast("Student removed.");
+        }).catch(fail);
+      });
+    }
+
+    function addS() {
+      const g = i => $("#" + i).value.trim();
+      if (!g("sn") || !g("sph")) return toast("Student name and parent phone are required.");
+      const code = "STU-" + Math.random().toString(36).slice(2, 8).toUpperCase();
+      const fee = +g("sf") || 0;
+      db.add("students", { name: g("sn"), grade: g("sg"), parent: g("sp"), phone: g("sph"), fee, code, ts: Date.now() })
+        .then(() => {
+          db.set("portal_info", code, { name: g("sn"), grade: g("sg"), fee });
+          ["sn", "sg", "sp", "sph", "sf"].forEach(id => $("#" + id).value = "");
+          toast("Student saved.");
+        }).catch(fail);
+    }
+
+    const sha = async s => [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)))].map(b => b.toString(16).padStart(2, "0")).join("");
+
+    function logout() {
+      SESS = { a: false, t: "" };
+      location.hash = "";
+    }
+
+    function gate() {
+      const lg = `<img src="${LOGO}" alt="Victory Academy logo">`;
+      const bk = `<p><a onclick="location.hash=''">← Back</a></p>`;
+      const w = h => `<main class="choose">${lg}<h1>${h}</h1>`;
+      if (R === "admin") {
+        if (AH === undefined) return w("Admin") + `<p class="mu">Loading…</p></main>`;
+        return w(AH ? "Admin login" : "Set admin PIN") + `
+          <div class="card">
+            <input id="gp" type="password" inputmode="numeric" maxlength="6" placeholder="${AH ? "Admin PIN" : "Choose a 4–6 digit PIN"}" onkeydown="if(event.key==='Enter')adminLogin()">
+            <button class="btn" onclick="adminLogin()">${AH ? "Unlock" : "Save PIN"}</button>
+          </div>${bk}</main>`;
+      }
+      if (!C.length) return w("Teacher login") + `<p class="mu">No teachers found. Ask the admin to add you first.</p>${bk}</main>`;
+      return w("Teacher login") + `
+        <div class="card">
+          <select id="gt">
+            <option value="">Choose your name</option>
+            ${C.map(t => `<option value="${t.id}">${esc(t.name)}</option>`).join("")}
+          </select>
+          <input id="gp" type="password" inputmode="numeric" maxlength="6" placeholder="Your PIN" onkeydown="if(event.key==='Enter')teacherLogin()">
+          <button class="btn" onclick="teacherLogin()">Unlock</button>
+        </div>${bk}</main>`;
+    }
+
+    async function adminLogin() {
+      const p = $("#gp").value.trim();
+      if (!/^\d{4,6}$/.test(p)) return toast("PIN must be 4–6 digits.");
+      const h = await sha("vt-admin:" + p);
+      if (!AH) {
+        try {
+          await db.set("config", "admin", { h });
+          AH = h; SESS.a = true; render();
+          toast("Admin PIN saved.");
+        } catch (e) { fail(e); }
+        return;
+      }
+      if (h === AH) { SESS.a = true; render(); }
+      else { toast("Wrong PIN."); }
+    }
+
+    async function changeAdminPin() {
+      const p = $("#new-pin").value.trim();
+      if (!/^\d{4,6}$/.test(p)) return toast("PIN must be 4–6 digits.");
+      try {
+        const h = await sha("vt-admin:" + p);
+        await db.set("config", "admin", { h });
+        AH = h; $("#new-pin").value = "";
+        toast("Admin PIN successfully updated!");
+      } catch (e) { fail(e); }
+    }
+
+    function toggleAutoWhatsApp(enabled) {
+      db.set("config", "auto_whatsapp", { enabled });
+      toast(enabled ? "Auto WhatsApp popup enabled." : "Auto WhatsApp popup disabled.");
+    }
+
+    async function teacherLogin() {
+      const t = C.find(x => x.id === $("#gt").value);
+      const p = $("#gp").value.trim();
+      if (!t) return toast("Choose your name.");
+      if (!t.pinh) return toast("Ask the admin to set your PIN.");
+      if (await sha(t.id + ":" + p) === t.pinh) { SESS.t = t.id; render(); }
+      else { toast("Wrong PIN."); }
+    }
+
+    async function addT() {
+      const n = $("#tn").value.trim(), p = $("#tpn").value.trim();
+      if (!n || !/^\d{4,6}$/.test(p)) return toast("Enter the teacher’s name and a 4–6 digit PIN.");
+      try {
+        const id = genId();
+        await db.set("staff", id, { name: n, phone: $("#tph").value.trim(), pinh: await sha(id + ":" + p), ts: Date.now() });
+        $("#tn").value = ""; $("#tph").value = ""; $("#tpn").value = "";
+        toast("Teacher saved.");
+      } catch (e) { fail(e); }
+    }
+
+    function showQR(id) {
+      const s = S.find(x => x.id === id);
+      if (!s) return;
+      const root = $("#modal-root");
+      root.innerHTML = `
+        <div class="ov" onclick="closeModal()">
+          <div class="card qc" onclick="event.stopPropagation()">
+            <img src="${LOGO}" alt="" width="56" height="56" style="border-radius:50%">
+            <h3>${esc(s.name)}</h3>
+            <div id="qr"></div>
+            <p><b>${esc(s.code)}</b></p>
+            <button class="btn2" onclick="closeModal()">Close</button>
+          </div>
+        </div>`;
+      if (typeof QRCode !== "undefined") {
+        new QRCode($("#qr"), { text: s.code, width: 200, height: 200 });
+      } else {
+        $("#qr").textContent = "QR library didn’t load.";
+      }
+    }
+
+    function setScanMode(m) {
+      scanMode = m;
+      render();
+    }
+
+    function listAtt() {
+      const el = $("#attlist");
+      if (!el) return;
+      const d = today();
+      const pr = A.filter(a => a.date === d).sort((a, b) => b.tin - a.tin);
+      const ids = new Set(pr.map(a => a.sid));
+      const ab = S.filter(s => !ids.has(s.id));
+      el.innerHTML = `
+        <h3>Today’s Attendance · ${d}</h3>
+        <div class="tw">
+          <table>
+            <tr><th>Student</th><th>In</th><th>Out</th><th>Status</th></tr>
+            ${pr.map(a => `<tr><td>${esc(a.name)}</td><td>${a.in}</td><td>${a.out || "–"}</td><td><span class="tag ${a.out ? "p" : ""}">${a.out ? "Left" : "In class"}</span></td></tr>`).join("")}
+            ${ab.map(s => `<tr><td>${esc(s.name)}</td><td>–</td><td>–</td><td><span class="tag p">Not marked</span></td></tr>`).join("")}
+            ${S.length ? "" : `<tr><td colspan="4" class="mu">Add students first.</td></tr>`}
+          </table>
+        </div>`;
+    }
+
+    function markAtt(code) {
+      code = String(code || "").trim().toUpperCase();
+      if (!code) return;
+      if (code === last.c && Date.now() - last.t < 3000) return;
+      last = { c: code, t: Date.now() };
+      const s = S.find(x => x.code === code);
+      if (!s) return toast("Unknown card: " + code);
+      const d = today(), id = d + "_" + s.id, cur = A.find(a => a.id === id), t = now(), pa = s.code + "_" + d, who = s.parent || "parent";
+      let p;
+
+      if (scanMode === "in") {
+        if (cur && cur.in) return toast(s.name + " already checked IN at " + cur.in);
+        p = db.set("attendance", id, { sid: s.id, name: s.name, date: d, in: t, out: cur ? cur.out : "", tin: Date.now() })
+          .then(() => {
+            db.set("portal_att", pa, { code: s.code, date: d, in: t, out: cur ? cur.out : "" });
+            alertP(s, `Dear ${who}, ${s.name} arrived at class at ${t} on ${d}.`);
+            toast("✓ " + s.name + " checked IN " + t);
+          });
+      } else {
+        if (!cur) return toast(s.name + " has not checked IN today yet!");
+        if (cur.out) return toast(s.name + " already checked OUT at " + cur.out);
+        p = db.update("attendance", id, { out: t })
+          .then(() => {
+            db.set("portal_att", pa, { code: s.code, date: d, in: cur.in, out: t });
+            alertP(s, `Dear ${who}, ${s.name} left class at ${t} on ${d}.`);
+            toast("✓ " + s.name + " checked OUT " + t);
+          });
+      }
+      p.catch(fail);
+      const c = $("#cd");
+      if (c) c.value = "";
+    }
+
+    async function cam() {
+      if (!("BarcodeDetector" in window)) return toast("Camera scan isn’t supported here. Use a USB scanner or type the code.");
+      try {
+        stopCam();
+        stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+        const v = $("#vid");
+        v.style.display = "block";
+        v.srcObject = stream;
+        await v.play();
+        const bd = new BarcodeDetector({ formats: ["qr_code"] });
+        timer = setInterval(async () => {
+          const r = await bd.detect(v).catch(() => []);
+          if (r[0]) markAtt(r[0].rawValue);
+        }, 700);
+      } catch (e) {
+        stopCam();
+        toast("Camera blocked. Use the code box instead.");
+      }
+    }
+
+    function stopCam() {
+      clearInterval(timer);
+      if (stream) stream.getTracks().forEach(t => t.stop());
+      stream = null;
+      const v = $("#vid");
+      if (v) v.style.display = "none";
+    }
+
+    async function bio(t) {
+      if (!window.PublicKeyCredential) return false;
+      const k = "wa_" + t.id;
+      const rec = db.get("config", k);
+      const id = rec ? rec.credId : null;
+      const ch = crypto.getRandomValues(new Uint8Array(32));
+      try {
+        if (id) {
+          await navigator.credentials.get({
+            publicKey: {
+              challenge: ch,
+              allowCredentials: [{ id: Uint8Array.from(atob(id), c => c.charCodeAt(0)), type: "public-key" }],
+              userVerification: "required", timeout: 60000
+            }
+          });
+          return true;
+        }
+        const c = await navigator.credentials.create({
+          publicKey: {
+            challenge: ch,
+            rp: { name: "Victory Tuition Centre" },
+            user: { id: new TextEncoder().encode(t.id), name: t.name, displayName: t.name },
+            pubKeyCredParams: [{ type: "public-key", alg: -7 }, { type: "public-key", alg: -257 }],
+            authenticatorSelection: { authenticatorAttachment: "platform", userVerification: "required" },
+            timeout: 60000
+          }
+        });
+        await db.set("config", k, { credId: btoa(String.fromCharCode(...new Uint8Array(c.rawId))) });
+        return true;
+      } catch (e) { return false; }
+    }
+
+    async function staffMark(k) {
+      const t = C.find(x => x.id === SESS.t);
+      if (!t) return toast("Please log in again.");
+      const p = $("#tpi").value.trim();
+      const ok = p ? (await sha(t.id + ":" + p) === t.pinh) : await bio(t);
+      const m = p ? "PIN" : "Fingerprint";
+      if (!ok) return toast(p ? "Wrong PIN." : "Fingerprint not verified. Try again or use your PIN.");
+      const d = today(), id = d + "_" + t.id, cur = SA.find(x => x.id === id);
+      try {
+        if (k === "in") {
+          if (cur) return toast("Already checked in at " + cur.in);
+          await db.set("staffatt", id, { tid: t.id, name: t.name, date: d, in: now(), out: "", method: m, ts: Date.now() });
+        } else {
+          if (!cur) return toast("Check in first.");
+          if (cur.out) return toast("Already checked out at " + cur.out);
+          await db.update("staffatt", id, { out: now() });
+        }
+        toast("✓ " + t.name + " checked " + k + " at " + now());
+        $("#tpi").value = "";
+      } catch (e) { fail(e); }
+    }
+
+    function addF() {
+      const s = S.find(x => x.id === $("#fs").value);
+      const amt = +$("#fa").value;
+      const mo = $("#fm").value;
+      if (!s || !amt || !mo) return toast("Pick a student, amount and month.");
+      const rc = "R" + Date.now().toString().slice(-7);
+      const bal = Math.max(0, (s.fee || 0) - monthSum(s.id, mo) - amt);
+      db.add("fees", { sid: s.id, name: s.name, amount: amt, month: mo, method: $("#fx").value, rc, ts: Date.now() })
+        .then(() => {
+          db.add("portal_fees", { code: s.code, month: mo, amount: amt, rc, ts: Date.now() });
+          alertP(s, `Payment received: LKR ${amt.toLocaleString()} for ${s.name} (${mo}). Receipt ${rc}. Balance: LKR ${bal.toLocaleString()}.`);
+          $("#fa").value = "";
+          toast("Receipt " + rc + " saved.");
+        }).catch(fail);
+    }
+
+    function notifyMonth() {
+      const m = $("#nm2").value;
+      if (!m) return;
+      let n = 0;
+      S.forEach(s => {
+        const b = (s.fee || 0) - monthSum(s.id, m);
+        const key = s.id + "_" + m;
+        if (b > 0 && !O.some(o => o.key === key)) {
+          alertP(s, `Fee reminder: ${s.name}’s fee for ${m} is not paid yet. Balance LKR ${b.toLocaleString()}. Thank you – Victory Tuition Centre.`, key);
+          n++;
+        }
+      });
+      toast(n ? n + " reminders added to Parent alerts." : "Nobody is unpaid for " + m + ".");
+    }
+
+    function addE() {
+      const s = S.find(x => x.id === $("#es").value);
+      const k = +$("#ek").value;
+      const o = +$("#eo").value;
+      const x = $("#en").value.trim();
+      const j = $("#ej").value.trim();
+      if (!s || !x || !o || $("#ek").value === "") return toast("Choose a student and fill exam, marks and total.");
+      db.add("exams", { sid: s.id, name: s.name, exam: x, subject: j, marks: k, total: o, ts: Date.now() })
+        .then(() => {
+          db.add("portal_exams", { code: s.code, exam: x, subject: j, marks: k, total: o, ts: Date.now() });
+          alertP(s, `Exam result: ${s.name} scored ${k}/${o} (${Math.round(k / o * 100)}%) in ${j || "the test"} – ${x}.`);
+          $("#en").value = ""; $("#ej").value = ""; $("#ek").value = "";
+          toast("Result saved.");
+        }).catch(fail);
+    }
+
+    function addX() {
+      const t = $("#xt").value.trim(), a = +$("#xa").value, d = $("#xd").value;
+      if (!t || !a || !d) return toast("Add what it was for, the amount and date.");
+      db.add("expenses", { title: t, amount: a, cat: $("#xc").value, date: d, ts: Date.now() })
+        .then(() => { $("#xt").value = ""; $("#xa").value = ""; toast("Expense saved."); }).catch(fail);
+    }
+
+    function addP() {
+      const t = $("#pt").value.trim(), a = +$("#pa").value, d = $("#pd").value;
+      if (!t || !a || !d) return toast("Add teacher name, amount and date.");
+      db.add("tpay", { teacher: t, amount: a, note: $("#pn").value.trim(), date: d, ts: Date.now() })
+        .then(() => { $("#pt").value = ""; $("#pa").value = ""; $("#pn").value = ""; toast("Payment saved."); }).catch(fail);
+    }
+
+    function sent(id) { db.update("alerts", id, { status: "sent" }).catch(fail); }
+
+    function openCode(passedCode) {
+      const c = (passedCode || ($("#sc") && $("#sc").value) || "").trim().toUpperCase();
+      const el = $("#sdata");
+      if (!c || !el) return;
+      currentPortalCode = c;
+      const inf = db.get("portal_info", c);
+      if (!inf) {
+        el.innerHTML = "<div class='card'><p class='mu'>Code not found. Check your QR card.</p></div>";
+        return;
+      }
+      const y = today().slice(0, 4);
+      const fees = db.getAll("portal_fees").filter(x => x.code === c);
+      const at = db.getAll("portal_att").filter(x => x.code === c && x.date.slice(0, 7) === month()).sort((p, q) => q.date.localeCompare(p.date));
+      const ex = db.getAll("portal_exams").filter(x => x.code === c).sort((p, q) => q.ts - p.ts);
+
+      el.innerHTML = `
+        <div class="hero">
+          <div><small style="color:#c9d4f5">Welcome</small><h2>${esc(inf.name)}</h2><small style="color:#c9d4f5">Grade ${esc(inf.grade)}</small></div>
+          <div class="clk">${at.length} days</div>
+        </div>
+        <div class="card">
+          <h3>Fee months ${y}</h3>
+          <div class="mg">
+            ${MN.map((n, j) => {
+              const k = y + "-" + String(j + 1).padStart(2, "0");
+              const p = sum(fees.filter(x => x.month === k), x => x.amount);
+              const st = k > month() ? "" : p >= (inf.fee || 1) ? "ok" : p > 0 ? "hf" : "no";
+              return `<div class="m ${st}"><b>${n}</b><small>${st === "ok" ? "Paid" : st === "hf" ? "Part" : st === "no" ? "Unpaid" : "–"}</small></div>`;
+            }).join("")}
+          </div>
+        </div>
+        <div class="card tw">
+          <h3>Attendance this month</h3>
+          <table>
+            <tr><th>Date</th><th>In</th><th>Out</th></tr>
+            ${at.map(x => `<tr><td>${x.date}</td><td>${x.in}</td><td>${x.out || "–"}</td></tr>`).join("") || `<tr><td colspan="3" class="mu">No attendance yet.</td></tr>`}
+          </table>
+        </div>
+        <div class="card tw">
+          <h3>Exam results</h3>
+          <table>
+            <tr><th>Exam</th><th>Subject</th><th>Marks</th></tr>
+            ${ex.map(x => `<tr><td>${esc(x.exam)}</td><td>${esc(x.subject)}</td><td>${x.marks}/${x.total}</td></tr>`).join("") || `<tr><td colspan="3" class="mu">No results yet.</td></tr>`}
+          </table>
+        </div>`;
+    }
+
+    async function updateStorageStats() {
+      const infoEl = $("#storage-info");
+      const fillEl = $("#storage-fill");
+      if (!infoEl) return;
+      let totalRecords = 0;
+      STORES.forEach(st => totalRecords += CACHE[st].size);
+      if (navigator.storage && navigator.storage.estimate) {
+        const est = await navigator.storage.estimate();
+        const usedMB = ((est.usage || 0) / (1024 * 1024)).toFixed(2);
+        const quotaMB = Math.max(400, Math.round((est.quota || 419430400) / (1024 * 1024)));
+        const pct = Math.min(100, Math.max(1, ((est.usage || 0) / (est.quota || 419430400)) * 100));
+        infoEl.textContent = `Used: ${usedMB} MB / Available Quota: ${quotaMB.toLocaleString()} MB (${totalRecords.toLocaleString()} records cached)`;
+        if (fillEl) fillEl.style.width = pct + "%";
+      } else {
+        infoEl.textContent = `Active Records: ${totalRecords.toLocaleString()} (IndexedDB Active)`;
+      }
+    }
+
+    function exportBackup() {
+      const dump = { version: 1, exportedAt: new Date().toISOString(), stores: {} };
+      STORES.forEach(st => { dump.stores[st] = Array.from(CACHE[st].values()); });
+      const blob = new Blob([JSON.stringify(dump)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url; a.download = `Victory_Tuition_Backup_${today()}.json`;
+      a.click(); URL.revokeObjectURL(url);
+      toast("Full backup downloaded.");
+    }
+
+    function importBackup(input) {
+      const file = input.files && input.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = async e => {
+        try {
+          const data = JSON.parse(e.target.result);
+          if (!data || !data.stores) throw new Error("Invalid backup file.");
+          const tx = idb.transaction(STORES, "readwrite");
+          STORES.forEach(st => {
+            const store = tx.objectStore(st);
+            store.clear();
+            (data.stores[st] || []).forEach(item => { if (item && item.id) store.put(item); });
+          });
+          tx.oncomplete = async () => {
+            await hydrateCache(); syncArrays();
+            toast("Backup restored successfully!");
+          };
+        } catch (err) { toast("Restore failed: " + err.message); }
+        input.value = "";
+      };
+      reader.readAsText(file);
+    }
+
+    window.addEventListener("hashchange", () => { stopCam(); page = ""; render(); });
+    setInterval(() => { const c = $("#clk"); if (c) c.textContent = new Date().toLocaleTimeString(); }, 1000);
+
+    window.onload = async () => {
+      rm = month();
+      await initDB();
+      syncArrays();
+      render();
+    };
+  </script>
+</body>
+</html>
