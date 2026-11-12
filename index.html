@@ -133,7 +133,7 @@
   <script>
     const $ = s => document.querySelector(s);
     const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-    const LOGO = "data:image/jpeg;base64,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";
+    const LOGO = "data:image/jpeg;base64,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";
 
     // Initialize Live Firebase Cloud Database
     const firebaseConfig = {
@@ -401,21 +401,21 @@
       },
       st() {
         return `
-          <h1>Students</h1>
+          <h1>Students Management</h1>
           <div class="card">
             <h3>Add student</h3>
-            <div class="row"><input id="sn" placeholder="Student name"><input id="sg" placeholder="Grade"></div>
+            <div class="row"><input id="sn" placeholder="Student name"><input id="sg" placeholder="Grade / Class"></div>
             <div class="row"><input id="sp" placeholder="Parent / guardian"><input id="sph" placeholder="Parent phone (e.g. 0771234567)" inputmode="tel"></div>
             <div class="row"><input id="sf" type="number" placeholder="Monthly fee (LKR)"></div>
             <button class="btn" onclick="addS()">Save student</button>
           </div>
           <div class="card tw">
             <table>
-              <tr><th>Name</th><th>Grade</th><th>Parent</th><th>Phone</th><th>Fee</th><th>QR / Code</th><th></th></tr>
+              <tr><th>Name</th><th>Grade</th><th>Parent</th><th>Phone</th><th>Fee</th><th>QR / Code</th><th>Actions</th></tr>
               ${S.map(s => `<tr>
                 <td>${esc(s.name)}</td><td>${esc(s.grade)}</td><td>${esc(s.parent)}</td><td>${esc(s.phone)}</td><td>${(s.fee || 0).toLocaleString()}</td>
                 <td><a onclick="showQR('${s.id}')">${esc(s.code)}</a></td>
-                <td><a onclick="delStudent('${s.id}')">Remove</a></td>
+                <td><a onclick="editStudentModal('${s.id}')">Edit</a> · <a onclick="delStudent('${s.id}')">Remove</a></td>
               </tr>`).join("") || `<tr><td colspan="7" class="mu">No students yet.</td></tr>`}
             </table>
           </div>`;
@@ -423,34 +423,47 @@
       tc() {
         const d = today();
         return `
-          <h1>Teachers</h1>
+          <h1>Teachers & Class Allocation</h1>
           <div class="card">
-            <h3>Add teacher</h3>
+            <h3>Add Teacher & Assign Class / Subject</h3>
             <div class="row">
               <input id="tn" placeholder="Teacher name">
               <input id="tph" placeholder="Phone">
+              <input id="tcl" placeholder="Class / Grade (e.g. Grade 10-A)">
+            </div>
+            <div class="row">
+              <input id="tsub" placeholder="Subjects (e.g. Mathematics, Science)">
               <input id="tpn" type="password" placeholder="PIN (4–6 digits)" inputmode="numeric" maxlength="6">
             </div>
-            <button class="btn" onclick="addT()">Save teacher</button>
+            <button class="btn" onclick="addT()">Save teacher profile</button>
+          </div>
+          <div class="card tw">
+            <h3>Teachers Directory & Classes</h3>
+            <table>
+              <tr><th>Teacher</th><th>Phone</th><th>Class / Grade</th><th>Subjects</th><th>Actions</th></tr>
+              ${C.map(t => `<tr>
+                <td>${esc(t.name)}</td><td>${esc(t.phone)}</td><td><span class="tag">${esc(t.classGrade || "General")}</span></td><td>${esc(t.subjects || "–")}</td>
+                <td><a onclick="editTeacherModal('${t.id}')">Edit</a> · <a onclick="del('staff','${t.id}')">Remove</a></td>
+              </tr>`).join("") || `<tr><td colspan="5" class="mu">No teachers yet.</td></tr>`}
+            </table>
           </div>
           <div class="card tw">
             <h3>Teacher attendance · ${d}</h3>
             <table>
-              <tr><th>Teacher</th><th>In</th><th>Out</th><th>Days this month</th><th></th></tr>
+              <tr><th>Teacher</th><th>In</th><th>Out</th><th>Days this month</th></tr>
               ${C.map(t => {
                 const a = SA.find(x => x.id === d + "_" + t.id);
                 return `<tr>
                   <td>${esc(t.name)}</td><td>${a ? a.in : "–"}</td><td>${(a && a.out) || "–"}</td>
                   <td>${SA.filter(x => x.tid === t.id && x.date.slice(0, 7) === month()).length}</td>
-                  <td><a onclick="del('staff','${t.id}')">Remove</a></td>
                 </tr>`;
-              }).join("") || `<tr><td colspan="5" class="mu">No teachers yet.</td></tr>`}
+              }).join("") || `<tr><td colspan="4" class="mu">No teachers yet.</td></tr>`}
             </table>
           </div>`;
       },
       at() {
         return `
-          <h1>Attendance Scanner</h1>
+          <h1>Attendance Scanner & Records</h1>
           <div class="card">
             <h3>Select Mode</h3>
             <div class="toggle-group">
@@ -496,7 +509,7 @@
         const m = month();
         const out = sum(S, s => Math.max(0, (s.fee || 0) - monthSum(s.id, m)));
         return `
-          <h1>Fees & months</h1>
+          <h1>Fees & Cash Payments</h1>
           <div class="grid">
             ${stat("Collected this month", "LKR " + sum(F.filter(f => f.month === m), f => f.amount).toLocaleString())}
             ${stat("Unpaid this month", "LKR " + out.toLocaleString())}
@@ -505,7 +518,7 @@
             <h3>Record payment</h3>
             <select id="fs" onchange="const s=S.find(x=>x.id===this.value);$('#fa').value=s?s.fee:''">
               <option value="">Choose student</option>
-              ${S.map(s => `<option value="${s.id}">${esc(s.name)}</option>`).join("")}
+              ${S.map(s => `<option value="${s.id}">${esc(s.name)} (${esc(s.grade || "General")})</option>`).join("")}
             </select>
             <div class="row">
               <input id="fa" type="number" placeholder="Amount (LKR)">
@@ -524,24 +537,26 @@
               <input id="nm2" type="month" value="${m}">
               <button class="btn btn-wa" onclick="notifyMonthAndSend()">🚀 Notify & Bulk Send WhatsApp</button>
             </div>
-            <small>✓ paid · ½ part paid · ✕ unpaid · Clicking above creates alerts and opens One-Click Bulk Sender</small>
           </div>
           <div class="card tw">
-            <h3>Payment history</h3>
+            <h3>Payment history & Edit / Delete</h3>
             <table>
-              <tr><th>Receipt</th><th>Student</th><th>Month</th><th>Amount</th><th>Method</th></tr>
-              ${F.slice().sort((a, b) => b.ts - a.ts).slice(0, 100).map(f => `<tr><td>${f.rc}</td><td>${esc(f.name)}</td><td>${f.month}</td><td>${f.amount.toLocaleString()}</td><td>${esc(f.method)}</td></tr>`).join("") || `<tr><td colspan="5" class="mu">No payments yet.</td></tr>`}
+              <tr><th>Receipt</th><th>Student</th><th>Month</th><th>Amount</th><th>Method</th><th>Actions</th></tr>
+              ${F.slice().sort((a, b) => b.ts - a.ts).slice(0, 100).map(f => `<tr>
+                <td>${f.rc}</td><td>${esc(f.name)}</td><td>${f.month}</td><td>${f.amount.toLocaleString()}</td><td>${esc(f.method)}</td>
+                <td><a onclick="editPaymentModal('${f.id}')">Edit</a> · <a onclick="del('fees','${f.id}')">Delete</a></td>
+              </tr>`).join("") || `<tr><td colspan="6" class="mu">No payments yet.</td></tr>`}
             </table>
           </div>`;
       },
       ex() {
         return `
-          <h1>Exam results</h1>
+          <h1>Exam results management</h1>
           <div class="card">
             <h3>Add result</h3>
             <select id="es">
               <option value="">Choose student</option>
-              ${S.map(s => `<option value="${s.id}">${esc(s.name)}</option>`).join("")}
+              ${S.map(s => `<option value="${s.id}">${esc(s.name)} (${esc(s.grade || "General")})</option>`).join("")}
             </select>
             <div class="row">
               <input id="en" placeholder="Exam (e.g. Term 1 test)">
@@ -554,9 +569,13 @@
             <button class="btn" onclick="addE()">Save & notify parent</button>
           </div>
           <div class="card tw">
+            <h3>Recorded Exam Results (Edit / Delete)</h3>
             <table>
-              <tr><th>Date</th><th>Student</th><th>Exam</th><th>Subject</th><th>Marks</th><th>%</th></tr>
-              ${E.slice().sort((a, b) => b.ts - a.ts).slice(0, 100).map(e => `<tr><td>${new Date(e.ts).toLocaleDateString()}</td><td>${esc(e.name)}</td><td>${esc(e.exam)}</td><td>${esc(e.subject)}</td><td>${e.marks}/${e.total}</td><td>${Math.round(e.marks / e.total * 100)}%</td></tr>`).join("") || `<tr><td colspan="6" class="mu">No results yet.</td></tr>`}
+              <tr><th>Date</th><th>Student</th><th>Exam</th><th>Subject</th><th>Marks</th><th>%</th><th>Actions</th></tr>
+              ${E.slice().sort((a, b) => b.ts - a.ts).slice(0, 100).map(e => `<tr>
+                <td>${new Date(e.ts).toLocaleDateString()}</td><td>${esc(e.name)}</td><td>${esc(e.exam)}</td><td>${esc(e.subject)}</td><td>${e.marks}/${e.total}</td><td>${Math.round(e.marks / e.total * 100)}%</td>
+                <td><a onclick="editExamModal('${e.id}')">Edit</a> · <a onclick="del('exams','${e.id}')">Delete</a></td>
+              </tr>`).join("") || `<tr><td colspan="7" class="mu">No results yet.</td></tr>`}
             </table>
           </div>`;
       },
@@ -579,8 +598,11 @@
           </div>
           <div class="card tw">
             <table>
-              <tr><th>Date</th><th>Item</th><th>Category</th><th>Amount</th><th></th></tr>
-              ${X.slice().sort((a, b) => b.date.localeCompare(a.date)).slice(0, 100).map(x => `<tr><td>${x.date}</td><td>${esc(x.title)}</td><td>${esc(x.cat)}</td><td>${x.amount.toLocaleString()}</td><td><a onclick="del('expenses','${x.id}')">Delete</a></td></tr>`).join("") || `<tr><td colspan="5" class="mu">No expenses yet.</td></tr>`}
+              <tr><th>Date</th><th>Item</th><th>Category</th><th>Amount</th><th>Actions</th></tr>
+              ${X.slice().sort((a, b) => b.date.localeCompare(a.date)).slice(0, 100).map(x => `<tr>
+                <td>${x.date}</td><td>${esc(x.title)}</td><td>${esc(x.cat)}</td><td>${x.amount.toLocaleString()}</td>
+                <td><a onclick="del('expenses','${x.id}')">Delete</a></td>
+              </tr>`).join("") || `<tr><td colspan="5" class="mu">No expenses yet.</td></tr>`}
             </table>
           </div>`;
       },
@@ -602,8 +624,11 @@
           </div>
           <div class="card tw">
             <table>
-              <tr><th>Date</th><th>Teacher</th><th>Note</th><th>Amount</th><th></th></tr>
-              ${P.slice().sort((a, b) => b.date.localeCompare(a.date)).slice(0, 100).map(p => `<tr><td>${p.date}</td><td>${esc(p.teacher)}</td><td>${esc(p.note)}</td><td>${p.amount.toLocaleString()}</td><td><a onclick="del('tpay','${p.id}')">Delete</a></td></tr>`).join("") || `<tr><td colspan="5" class="mu">No payments yet.</td></tr>`}
+              <tr><th>Date</th><th>Teacher</th><th>Note</th><th>Amount</th><th>Actions</th></tr>
+              ${P.slice().sort((a, b) => b.date.localeCompare(a.date)).slice(0, 100).map(p => `<tr>
+                <td>${p.date}</td><td>${esc(p.teacher)}</td><td>${esc(p.note)}</td><td>${p.amount.toLocaleString()}</td>
+                <td><a onclick="del('tpay','${p.id}')">Delete</a></td>
+              </tr>`).join("") || `<tr><td colspan="5" class="mu">No payments yet.</td></tr>`}
             </table>
           </div>`;
       },
@@ -625,11 +650,11 @@
           <div class="card tw">
             <h3>Not paid yet · ${m}</h3>
             <table>
-              <tr><th>Student</th><th>Parent phone</th><th>Balance</th><th></th></tr>
+              <tr><th>Student</th><th>Grade</th><th>Parent phone</th><th>Balance</th><th></th></tr>
               ${due.map(o => `<tr>
-                <td>${esc(o.s.name)}</td><td>${esc(o.s.phone)}</td><td>${o.d.toLocaleString()}</td>
+                <td>${esc(o.s.name)}</td><td>${esc(o.s.grade || "General")}</td><td>${esc(o.s.phone)}</td><td>${o.d.toLocaleString()}</td>
                 <td><a href="https://wa.me/${wa(o.s.phone)}?text=${encodeURIComponent(`Dear ${o.s.parent || "parent"}, the fee balance for ${o.s.name} (${m}) is LKR ${o.d.toLocaleString()}. Thank you – Victory Tuition Centre.`)}" target="_blank" rel="noopener">Remind</a></td>
-              </tr>`).join("") || `<tr><td colspan="4" class="mu">${S.length ? "Everyone has paid." : "No students yet."}</td></tr>`}
+              </tr>`).join("") || `<tr><td colspan="5" class="mu">${S.length ? "Everyone has paid." : "No students yet."}</td></tr>`}
             </table>
           </div>`;
       },
@@ -639,7 +664,7 @@
           <h1>Parent alerts</h1>
           <div class="card bulk-box">
             <h3>🚀 One-Click Bulk WhatsApp Sender (${pending.length} Pending)</h3>
-            <p class="mu">Instead of clicking one by one, use the button below to automatically launch all pending WhatsApp messages in sequence or mark all sent at once.</p>
+            <p class="mu">Use the button below to automatically launch all pending WhatsApp messages in sequence.</p>
             <div class="row">
               <button class="btn btn-wa" onclick="startBulkWhatsApp()" ${pending.length === 0 ? "disabled" : ""}>🚀 Send All ${pending.length} Pending Now</button>
               <button class="btn2" onclick="markAllAlertsSent()" ${pending.length === 0 ? "disabled" : ""}>✓ Mark All as Sent</button>
@@ -707,7 +732,7 @@
 
     function mrow(s) {
       const y = today().slice(0, 4);
-      return `<tr><td>${esc(s.name)}</td>${MN.map((n, i) => {
+      return `<tr><td>${esc(s.name)} <small>(${esc(s.grade || "Gen")})</small></td>${MN.map((n, i) => {
         const k = y + "-" + String(i + 1).padStart(2, "0");
         const p = monthSum(s.id, k);
         return k > month() ? `<td class="mu">·</td>` : p >= (s.fee || 1) ? `<td class="ok">✓</td>` : p > 0 ? `<td class="hf">½</td>` : `<td class="no">✕</td>`;
@@ -752,6 +777,137 @@
         }).catch(fail);
     }
 
+    function editStudentModal(id) {
+      const s = S.find(x => x.id === id);
+      if (!s) return;
+      const root = $("#modal-root");
+      root.innerHTML = `<div class="ov" onclick="closeModal()">
+        <div class="card qc" style="max-width:420px;text-align:left" onclick="event.stopPropagation()">
+          <h3>Edit Student Details</h3>
+          <label class="mu">Name</label><input id="es-name" value="${esc(s.name)}">
+          <label class="mu">Grade / Class</label><input id="es-grade" value="${esc(s.grade)}">
+          <label class="mu">Parent / Guardian</label><input id="es-parent" value="${esc(s.parent)}">
+          <label class="mu">Parent Phone</label><input id="es-phone" value="${esc(s.phone)}" inputmode="tel">
+          <label class="mu">Monthly Fee (LKR)</label><input id="es-fee" type="number" value="${s.fee || 0}">
+          <div class="row" style="margin-top:12px">
+            <button class="btn" onclick="saveEditStudent('${s.id}')">Update Student</button>
+            <button class="btn2" onclick="closeModal()">Cancel</button>
+          </div>
+        </div>
+      </div>`;
+    }
+
+    function saveEditStudent(id) {
+      const name = $("#es-name").value.trim();
+      const grade = $("#es-grade").value.trim();
+      const parent = $("#es-parent").value.trim();
+      const phone = $("#es-phone").value.trim();
+      const fee = +($("#es-fee").value) || 0;
+      if (!name || !phone) return toast("Name and phone are required.");
+      db.update("students", id, { name, grade, parent, phone, fee }).then(() => {
+        const s = S.find(x => x.id === id);
+        if (s) db.update("portal_info", s.code, { name, grade, fee });
+        closeModal();
+        toast("Student updated successfully.");
+      }).catch(fail);
+    }
+
+    function editTeacherModal(id) {
+      const t = C.find(x => x.id === id);
+      if (!t) return;
+      const root = $("#modal-root");
+      root.innerHTML = `<div class="ov" onclick="closeModal()">
+        <div class="card qc" style="max-width:420px;text-align:left" onclick="event.stopPropagation()">
+          <h3>Edit Teacher Profile</h3>
+          <label class="mu">Name</label><input id="et-name" value="${esc(t.name)}">
+          <label class="mu">Phone</label><input id="et-phone" value="${esc(t.phone)}" inputmode="tel">
+          <label class="mu">Class / Grade</label><input id="et-class" value="${esc(t.classGrade || "")}">
+          <label class="mu">Subjects</label><input id="et-sub" value="${esc(t.subjects || "")}">
+          <div class="row" style="margin-top:12px">
+            <button class="btn" onclick="saveEditTeacher('${t.id}')">Update Teacher</button>
+            <button class="btn2" onclick="closeModal()">Cancel</button>
+          </div>
+        </div>
+      </div>`;
+    }
+
+    function saveEditTeacher(id) {
+      const name = $("#et-name").value.trim();
+      const phone = $("#et-phone").value.trim();
+      const classGrade = $("#et-class").value.trim();
+      const subjects = $("#et-sub").value.trim();
+      if (!name) return toast("Teacher name is required.");
+      db.update("staff", id, { name, phone, classGrade, subjects }).then(() => {
+        closeModal();
+        toast("Teacher updated successfully.");
+      }).catch(fail);
+    }
+
+    function editExamModal(id) {
+      const e = E.find(x => x.id === id);
+      if (!e) return;
+      const root = $("#modal-root");
+      root.innerHTML = `<div class="ov" onclick="closeModal()">
+        <div class="card qc" style="max-width:420px;text-align:left" onclick="event.stopPropagation()">
+          <h3>Edit Exam Result</h3>
+          <label class="mu">Exam Title</label><input id="ee-exam" value="${esc(e.exam)}">
+          <label class="mu">Subject</label><input id="ee-sub" value="${esc(e.subject)}">
+          <label class="mu">Marks Obtained</label><input id="ee-marks" type="number" value="${e.marks}">
+          <label class="mu">Total Out Of</label><input id="ee-total" type="number" value="${e.total}">
+          <div class="row" style="margin-top:12px">
+            <button class="btn" onclick="saveEditExam('${e.id}')">Update Result</button>
+            <button class="btn2" onclick="closeModal()">Cancel</button>
+          </div>
+        </div>
+      </div>`;
+    }
+
+    function saveEditExam(id) {
+      const exam = $("#ee-exam").value.trim();
+      const subject = $("#ee-sub").value.trim();
+      const marks = +($("#ee-marks").value);
+      const total = +($("#ee-total").value);
+      if (!exam || isNaN(marks) || isNaN(total)) return toast("Fill all fields correctly.");
+      db.update("exams", id, { exam, subject, marks, total }).then(() => {
+        closeModal();
+        toast("Exam result updated successfully.");
+      }).catch(fail);
+    }
+
+    function editPaymentModal(id) {
+      const f = F.find(x => x.id === id);
+      if (!f) return;
+      const root = $("#modal-root");
+      root.innerHTML = `<div class="ov" onclick="closeModal()">
+        <div class="card qc" style="max-width:420px;text-align:left" onclick="event.stopPropagation()">
+          <h3>Edit Payment Record</h3>
+          <label class="mu">Amount (LKR)</label><input id="ef-amt" type="number" value="${f.amount}">
+          <label class="mu">Month</label><input id="ef-mon" type="month" value="${f.month}">
+          <label class="mu">Payment Method</label>
+          <select id="ef-met">
+            <option ${f.method === 'Cash' ? 'selected' : ''}>Cash</option>
+            <option ${f.method === 'Bank transfer' ? 'selected' : ''}>Bank transfer</option>
+            <option ${f.method === 'Card' ? 'selected' : ''}>Card</option>
+          </select>
+          <div class="row" style="margin-top:12px">
+            <button class="btn" onclick="saveEditPayment('${f.id}')">Update Payment</button>
+            <button class="btn2" onclick="closeModal()">Cancel</button>
+          </div>
+        </div>
+      </div>`;
+    }
+
+    function saveEditPayment(id) {
+      const amount = +($("#ef-amt").value);
+      const month = $("#ef-mon").value;
+      const method = $("#ef-met").value;
+      if (!amount || !month) return toast("Amount and month are required.");
+      db.update("fees", id, { amount, month, method }).then(() => {
+        closeModal();
+        toast("Payment updated successfully.");
+      }).catch(fail);
+    }
+
     const sha = async s => [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)))].map(b => b.toString(16).padStart(2, "0")).join("");
 
     function logout() {
@@ -776,7 +932,7 @@
         <div class="card">
           <select id="gt">
             <option value="">Choose your name</option>
-            ${C.map(t => `<option value="${t.id}">${esc(t.name)}</option>`).join("")}
+            ${C.map(t => `<option value="${t.id}">${esc(t.name)} (${esc(t.classGrade || "General")})</option>`).join("")}
           </select>
           <input id="gp" type="password" inputmode="numeric" maxlength="6" placeholder="Your PIN" onkeydown="if(event.key==='Enter')teacherLogin()">
           <button class="btn" onclick="teacherLogin()">Unlock</button>
@@ -826,12 +982,20 @@
 
     async function addT() {
       const n = $("#tn").value.trim(), p = $("#tpn").value.trim();
-      if (!n || !/^\d{4,6}$/.test(p)) return toast("Enter the teacher’s name and a 4–6 digit PIN.");
+      const cl = $("#tcl").value.trim(), sub = $("#tsub").value.trim();
+      if (!n || !/^\d{4,6}$/.test(p)) return toast("Enter teacher name and a 4–6 digit PIN.");
       try {
         const id = genId();
-        await db.set("staff", id, { name: n, phone: $("#tph").value.trim(), pinh: await sha(id + ":" + p), ts: Date.now() });
-        $("#tn").value = ""; $("#tph").value = ""; $("#tpn").value = "";
-        toast("Teacher saved to cloud.");
+        await db.set("staff", id, { 
+          name: n, 
+          phone: $("#tph").value.trim(), 
+          classGrade: cl, 
+          subjects: sub,
+          pinh: await sha(id + ":" + p), 
+          ts: Date.now() 
+        });
+        ["tn", "tph", "tcl", "tsub", "tpn"].forEach(id => $("#" + id).value = "");
+        toast("Teacher and class allocation saved to cloud.");
       } catch (e) { fail(e); }
     }
 
@@ -844,6 +1008,7 @@
           <div class="card qc" onclick="event.stopPropagation()">
             <img src="${LOGO}" alt="" width="56" height="56" style="border-radius:50%">
             <h3>${esc(s.name)}</h3>
+            <p class="mu">Class: ${esc(s.grade || "General")}</p>
             <div id="qr"></div>
             <p><b>${esc(s.code)}</b></p>
             <button class="btn2" onclick="closeModal()">Close</button>
@@ -869,13 +1034,20 @@
       const ids = new Set(pr.map(a => a.sid));
       const ab = S.filter(s => !ids.has(s.id));
       el.innerHTML = `
-        <h3>Today’s Attendance · ${d}</h3>
+        <h3>Today’s Attendance Records & Edit/Delete · ${d}</h3>
         <div class="tw">
           <table>
-            <tr><th>Student</th><th>In</th><th>Out</th><th>Status</th></tr>
-            ${pr.map(a => `<tr><td>${esc(a.name)}</td><td>${a.in}</td><td>${a.out || "–"}</td><td><span class="tag ${a.out ? "p" : ""}">${a.out ? "Left" : "In class"}</span></td></tr>`).join("")}
-            ${ab.map(s => `<tr><td>${esc(s.name)}</td><td>–</td><td>–</td><td><span class="tag p">Not marked</span></td></tr>`).join("")}
-            ${S.length ? "" : `<tr><td colspan="4" class="mu">Add students first.</td></tr>`}
+            <tr><th>Student</th><th>Class / Grade</th><th>In</th><th>Out</th><th>Status</th><th>Actions</th></tr>
+            ${pr.map(a => {
+              const st = S.find(x => x.id === a.sid);
+              return `<tr>
+                <td>${esc(a.name)}</td><td>${esc(st ? st.grade : "–")}</td><td>${a.in}</td><td>${a.out || "–"}</td>
+                <td><span class="tag ${a.out ? "p" : ""}">${a.out ? "Left" : "In class"}</span></td>
+                <td><a onclick="del('attendance','${a.id}')">Delete</a></td>
+              </tr>`;
+            }).join("")}
+            ${ab.map(s => `<tr><td>${esc(s.name)}</td><td>${esc(s.grade || "–")}</td><td>–</td><td>–</td><td><span class="tag p">Not marked</span></td><td>–</td></tr>`).join("")}
+            ${S.length ? "" : `<tr><td colspan="6" class="mu">Add students first.</td></tr>`}
           </table>
         </div>`;
     }
@@ -1235,4 +1407,4 @@
     };
   </script>
 </body>
-</html>
+</html
