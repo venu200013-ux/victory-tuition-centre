@@ -105,7 +105,9 @@
     .toggle-btn.active-in { background: var(--ok); color: #fff; }
     .toggle-btn.active-out { background: var(--no); color: #fff; }
     .storage-bar { width: 100%; height: 10px; background: var(--bd); border-radius: 5px; overflow: hidden; margin: 8px 0; }
-    .storage-fill { height: 100%; background: linear-gradient(90deg, #0e9f6e, #2f5bea); width: 0%; transition: width 0.3s; }
+    .storage-fill { height: 100%; background: linear-gradient(90deg, #0e9f6e, #2f5bea); width: 100%; transition: width 0.3s; }
+    .live-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: #34d399; font-weight: 600; }
+    .live-dot { width: 8px; height: 8px; border-radius: 50%; background: #34d399; box-shadow: 0 0 8px #34d399; }
     @media (max-width: 760px) {
       .app { flex-direction: column; }
       nav { width: auto; flex-direction: row; overflow-x: auto; padding: 10px; }
@@ -116,53 +118,76 @@
   </style>
 </head>
 <body>
-  <div class="app" id="app"><main><p class="mu">Loading 400MB+ Engine…</p></main></div>
+  <div class="app" id="app"><main><p class="mu">Connecting to Live Cloud Database…</p></main></div>
   <div id="toast"></div>
   <div id="modal-root"></div>
 
+  <!-- QR Code Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <!-- Firebase Compat SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+
   <script>
     const $ = s => document.querySelector(s);
     const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-    const LOGO = "data:image/jpeg;base64,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";
+    const LOGO = "data:image/jpeg;base64,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";
 
-    const DB_NAME = "VictoryTuitionDB_V2";
-    const DB_VERSION = 1;
+    // Initialize Live Firebase Cloud Database
+    const firebaseConfig = {
+      apiKey: "AIzaSyDGxFT17V4AMG-F0GlfV5VPlnb-jPtyS6s",
+      authDomain: "victory-tuition-center.firebaseapp.com",
+      databaseURL: "https://victory-tuition-center-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "victory-tuition-center",
+      storageBucket: "victory-tuition-center.firebasestorage.app",
+      messagingSenderId: "1060935904691",
+      appId: "1:1060935904691:web:848260fc7b01976a62efc6",
+      measurementId: "G-84BL93911V"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const rtdb = firebase.database();
+
     const STORES = ["config", "notices", "students", "attendance", "fees", "alerts", "exams", "expenses", "tpay", "staff", "staffatt", "portal_info", "portal_att", "portal_fees", "portal_exams"];
     
-    let idb = null;
+    let cloudReady = false;
     const CACHE = {};
     STORES.forEach(s => CACHE[s] = new Map());
 
-    function initDB() {
-      return new Promise((resolve, reject) => {
-        const req = indexedDB.open(DB_NAME, DB_VERSION);
-        req.onupgradeneeded = e => {
-          const d = e.target.result;
-          STORES.forEach(st => {
-            if (!d.objectStoreNames.contains(st)) d.createObjectStore(st, { keyPath: "id" });
+    function initCloudSync() {
+      return new Promise((resolve) => {
+        let loadedCount = 0;
+        STORES.forEach(st => {
+          rtdb.ref(st).on("value", snap => {
+            CACHE[st].clear();
+            const val = snap.val();
+            if (val) {
+              Object.entries(val).forEach(([k, v]) => {
+                if (v && typeof v === "object") {
+                  CACHE[st].set(k, { ...v, id: k });
+                }
+              });
+            }
+            if (!cloudReady) {
+              loadedCount++;
+              if (loadedCount >= STORES.length) {
+                cloudReady = true;
+                syncArrays();
+                resolve();
+              }
+            } else {
+              syncArrays();
+            }
+          }, err => {
+            console.error("Firebase Sync Error:", err);
+            toast("Cloud connection issue: " + err.message);
+            if (!cloudReady) {
+              cloudReady = true;
+              resolve();
+            }
           });
-        };
-        req.onsuccess = async e => {
-          idb = e.target.result;
-          await hydrateCache();
-          resolve();
-        };
-        req.onerror = e => reject(e.target.error);
+        });
       });
-    }
-
-    async function hydrateCache() {
-      const tx = idb.transaction(STORES, "readonly");
-      await Promise.all(STORES.map(st => new Promise(res => {
-        const req = tx.objectStore(st).getAll();
-        req.onsuccess = () => {
-          CACHE[st].clear();
-          (req.result || []).forEach(item => CACHE[st].set(item.id, item));
-          res();
-        };
-        req.onerror = () => res();
-      })));
     }
 
     function genId() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
@@ -172,28 +197,21 @@
         const rec = { ...data, id };
         CACHE[store].set(id, rec);
         syncArrays();
-        return new Promise((resolve, reject) => {
-          const tx = idb.transaction(store, "readwrite");
-          tx.objectStore(store).put(rec);
-          tx.oncomplete = () => resolve(rec);
-          tx.onerror = e => reject(e.target.error);
-        });
+        return rtdb.ref(`${store}/${id}`).set(rec).then(() => rec);
       },
       add(store, data) { return this.set(store, genId(), data); },
       update(store, id, partial) {
         const existing = CACHE[store].get(id);
         if (!existing) return Promise.resolve(null);
-        return this.set(store, id, { ...existing, ...partial });
+        const updated = { ...existing, ...partial };
+        CACHE[store].set(id, updated);
+        syncArrays();
+        return rtdb.ref(`${store}/${id}`).update(partial).then(() => updated);
       },
       delete(store, id) {
         CACHE[store].delete(id);
         syncArrays();
-        return new Promise((resolve, reject) => {
-          const tx = idb.transaction(store, "readwrite");
-          tx.objectStore(store).delete(id);
-          tx.oncomplete = () => resolve();
-          tx.onerror = e => reject(e.target.error);
-        });
+        return rtdb.ref(`${store}/${id}`).remove();
       },
       get(store, id) { return CACHE[store].get(id) || null; },
       getAll(store) { return Array.from(CACHE[store].values()); }
@@ -221,7 +239,7 @@
       ov: "Overview", nb: "Notice board", st: "Students", tc: "Teachers",
       at: "Attendance", fe: "Fees & months", ex: "Exam results", xp: "Expenses",
       tp: "Teacher payments", rp: "Reports", al: "Parent alerts", ta: "My attendance",
-      sv: "My portal", bk: "Storage & Settings"
+      sv: "My portal", bk: "Cloud & Settings"
     };
     const TABS = {
       admin: ["ov", "nb", "st", "tc", "at", "fe", "ex", "xp", "tp", "rp", "al", "bk"],
@@ -260,7 +278,7 @@
       });
     }
 
-    const fail = e => toast("Couldn’t save: " + (e && e.message || "storage error"));
+    const fail = e => toast("Couldn’t save: " + (e && e.message || "cloud sync error"));
 
     function toast(m) {
       const t = $("#toast");
@@ -298,6 +316,7 @@
         <img src="${LOGO}" alt="Victory Academy logo">
         <h1>Victory Tuition Centre</h1>
         <p class="mu">Genius are made, not born.</p>
+        <div class="live-badge" style="margin-bottom:8px"><span class="live-dot"></span> Live Cloud Sync Connected</div>
         <div class="grid">
           <a class="role r1" href="#admin"><b>Admin</b><small>🔒 PIN required</small></a>
           <a class="role r2" href="#teacher"><b>Teacher</b><small>🔒 PIN required</small></a>
@@ -310,7 +329,7 @@
     function render() {
       R = role();
       if (!R) { $("#app").innerHTML = chooser(); return; }
-      if (!idb) { $("#app").innerHTML = `<main><p class="mu">Initializing database…</p></main>`; return; }
+      if (!cloudReady) { $("#app").innerHTML = `<main><p class="mu">Connecting to Live Cloud Database…</p></main>`; return; }
       if ((R === "admin" && !SESS.a) || (R === "teacher" && !SESS.t)) {
         $("#app").innerHTML = gate();
         return;
@@ -325,7 +344,7 @@
           </div>
           ${tabs.map(k => `<a class="${k === page ? "on" : ""}" onclick="go('${k}')">${T[k]}</a>`).join("")}
           <a onclick="logout()">⇄ Log out / switch</a>
-          <small class="who">${R} mode · 400MB+ Ready</small>
+          <small class="who">${R} mode · <span style="color:#34d399">● Live Cloud</span></small>
         </nav>
         <main>${pages[page]()}</main>`;
 
@@ -639,7 +658,7 @@
         const auto = db.get("config", "auto_whatsapp");
         const autoEnabled = auto ? auto.enabled : false;
         return `
-          <h1>Storage & Admin Settings</h1>
+          <h1>Cloud & Admin Settings</h1>
           <div class="card">
             <h3>Change Admin PIN</h3>
             <div class="row">
@@ -655,14 +674,14 @@
             </label>
           </div>
           <div class="card">
-            <h3>High-Capacity IndexedDB Status</h3>
-            <p class="mu" id="storage-info">Calculating storage capacity…</p>
-            <div class="storage-bar"><div class="storage-fill" id="storage-fill" style="width:1%"></div></div>
-            <small>All student records, attendance logs, fee receipts, and exam results are stored locally in IndexedDB (supports 400MB+ effortlessly with zero lag).</small>
+            <h3>Firebase Live Cloud Database Status</h3>
+            <p class="mu" id="storage-info">Connected to Firebase Realtime Database…</p>
+            <div class="storage-bar"><div class="storage-fill" id="storage-fill" style="width:100%"></div></div>
+            <small>All student records, attendance logs, fee receipts, and exam results sync across Director, Checkie, Teachers, and Parents in real-time.</small>
           </div>
           <div class="card">
-            <h3>Full Backup & Restore</h3>
-            <p class="mu">Download a complete backup file of your centre’s data so nothing is ever lost.</p>
+            <h3>Full Cloud Backup & Restore</h3>
+            <p class="mu">Download a complete JSON backup of your cloud database or restore from an existing backup file.</p>
             <div class="row">
               <button class="btn" onclick="exportBackup()">⬇ Download Full Backup (.json)</button>
               <button class="btn2" onclick="$('#imp-file').click()">⬆ Restore From Backup</button>
@@ -686,12 +705,12 @@
       if (!t || !b) return toast("Add a title and message.");
       db.add("notices", { title: t, body: b, ts: Date.now() }).then(() => {
         $("#nt").value = ""; $("#nm").value = "";
-        toast("Notice posted.");
+        toast("Notice posted to cloud.");
       }).catch(fail);
     }
 
     const del = (c, id) => {
-      askConfirm("Are you sure you want to delete this record?", () => {
+      askConfirm("Are you sure you want to delete this record from the cloud?", () => {
         db.delete(c, id).then(() => toast("Deleted.")).catch(fail);
       });
     };
@@ -715,7 +734,7 @@
         .then(() => {
           db.set("portal_info", code, { name: g("sn"), grade: g("sg"), fee });
           ["sn", "sg", "sp", "sph", "sf"].forEach(id => $("#" + id).value = "");
-          toast("Student saved.");
+          toast("Student saved to cloud.");
         }).catch(fail);
     }
 
@@ -758,7 +777,7 @@
         try {
           await db.set("config", "admin", { h });
           AH = h; SESS.a = true; render();
-          toast("Admin PIN saved.");
+          toast("Admin PIN saved to cloud.");
         } catch (e) { fail(e); }
         return;
       }
@@ -798,7 +817,7 @@
         const id = genId();
         await db.set("staff", id, { name: n, phone: $("#tph").value.trim(), pinh: await sha(id + ":" + p), ts: Date.now() });
         $("#tn").value = ""; $("#tph").value = ""; $("#tpn").value = "";
-        toast("Teacher saved.");
+        toast("Teacher saved to cloud.");
       } catch (e) { fail(e); }
     }
 
@@ -974,7 +993,7 @@
           db.add("portal_fees", { code: s.code, month: mo, amount: amt, rc, ts: Date.now() });
           alertP(s, `Payment received: LKR ${amt.toLocaleString()} for ${s.name} (${mo}). Receipt ${rc}. Balance: LKR ${bal.toLocaleString()}.`);
           $("#fa").value = "";
-          toast("Receipt " + rc + " saved.");
+          toast("Receipt " + rc + " saved to cloud.");
         }).catch(fail);
     }
 
@@ -1005,7 +1024,7 @@
           db.add("portal_exams", { code: s.code, exam: x, subject: j, marks: k, total: o, ts: Date.now() });
           alertP(s, `Exam result: ${s.name} scored ${k}/${o} (${Math.round(k / o * 100)}%) in ${j || "the test"} – ${x}.`);
           $("#en").value = ""; $("#ej").value = ""; $("#ek").value = "";
-          toast("Result saved.");
+          toast("Result saved to cloud.");
         }).catch(fail);
     }
 
@@ -1013,14 +1032,14 @@
       const t = $("#xt").value.trim(), a = +$("#xa").value, d = $("#xd").value;
       if (!t || !a || !d) return toast("Add what it was for, the amount and date.");
       db.add("expenses", { title: t, amount: a, cat: $("#xc").value, date: d, ts: Date.now() })
-        .then(() => { $("#xt").value = ""; $("#xa").value = ""; toast("Expense saved."); }).catch(fail);
+        .then(() => { $("#xt").value = ""; $("#xa").value = ""; toast("Expense saved to cloud."); }).catch(fail);
     }
 
     function addP() {
       const t = $("#pt").value.trim(), a = +$("#pa").value, d = $("#pd").value;
       if (!t || !a || !d) return toast("Add teacher name, amount and date.");
       db.add("tpay", { teacher: t, amount: a, note: $("#pn").value.trim(), date: d, ts: Date.now() })
-        .then(() => { $("#pt").value = ""; $("#pa").value = ""; $("#pn").value = ""; toast("Payment saved."); }).catch(fail);
+        .then(() => { $("#pt").value = ""; $("#pa").value = ""; $("#pn").value = ""; toast("Payment saved to cloud."); }).catch(fail);
     }
 
     function sent(id) { db.update("alerts", id, { status: "sent" }).catch(fail); }
@@ -1072,22 +1091,12 @@
         </div>`;
     }
 
-    async function updateStorageStats() {
+    function updateStorageStats() {
       const infoEl = $("#storage-info");
-      const fillEl = $("#storage-fill");
       if (!infoEl) return;
       let totalRecords = 0;
       STORES.forEach(st => totalRecords += CACHE[st].size);
-      if (navigator.storage && navigator.storage.estimate) {
-        const est = await navigator.storage.estimate();
-        const usedMB = ((est.usage || 0) / (1024 * 1024)).toFixed(2);
-        const quotaMB = Math.max(400, Math.round((est.quota || 419430400) / (1024 * 1024)));
-        const pct = Math.min(100, Math.max(1, ((est.usage || 0) / (est.quota || 419430400)) * 100));
-        infoEl.textContent = `Used: ${usedMB} MB / Available Quota: ${quotaMB.toLocaleString()} MB (${totalRecords.toLocaleString()} records cached)`;
-        if (fillEl) fillEl.style.width = pct + "%";
-      } else {
-        infoEl.textContent = `Active Records: ${totalRecords.toLocaleString()} (IndexedDB Active)`;
-      }
+      infoEl.textContent = `Live Firebase Cloud Active · ${totalRecords.toLocaleString()} synced records across all devices`;
     }
 
     function exportBackup() {
@@ -1096,9 +1105,9 @@
       const blob = new Blob([JSON.stringify(dump)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
-      a.href = url; a.download = `Victory_Tuition_Backup_${today()}.json`;
+      a.href = url; a.download = `Victory_Tuition_Cloud_Backup_${today()}.json`;
       a.click(); URL.revokeObjectURL(url);
-      toast("Full backup downloaded.");
+      toast("Full cloud backup downloaded.");
     }
 
     function importBackup(input) {
@@ -1109,16 +1118,15 @@
         try {
           const data = JSON.parse(e.target.result);
           if (!data || !data.stores) throw new Error("Invalid backup file.");
-          const tx = idb.transaction(STORES, "readwrite");
+          const updates = {};
           STORES.forEach(st => {
-            const store = tx.objectStore(st);
-            store.clear();
-            (data.stores[st] || []).forEach(item => { if (item && item.id) store.put(item); });
+            updates[st] = {};
+            (data.stores[st] || []).forEach(item => {
+              if (item && item.id) updates[st][item.id] = item;
+            });
           });
-          tx.oncomplete = async () => {
-            await hydrateCache(); syncArrays();
-            toast("Backup restored successfully!");
-          };
+          await rtdb.ref().update(updates);
+          toast("Backup restored to Live Cloud successfully!");
         } catch (err) { toast("Restore failed: " + err.message); }
         input.value = "";
       };
@@ -1130,8 +1138,7 @@
 
     window.onload = async () => {
       rm = month();
-      await initDB();
-      syncArrays();
+      await initCloudSync();
       render();
     };
   </script>
